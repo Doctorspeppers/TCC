@@ -1,10 +1,6 @@
 <!doctype html>
 <html lang="en">
 
-<?php
-  $nomeDaPagina = "Tela de recentes";
-  include "header.php";
-  ?>
 
 <body>
 
@@ -44,10 +40,6 @@
         </div>
     </div>
 
-    </body>
-        <!-- RODAPE -->
-    <?php
-        include "footer.php"
-    ?>
+
 
 </html>

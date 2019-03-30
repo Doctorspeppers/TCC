@@ -2,12 +2,9 @@
 <html lang="en">
 
 
-  <?php
-    $nomeDaPagina = "Sobre";
-    include "header.php";
-  ?>
+  
 
-    <!-- TEXTO INICIAL -->
+
     <div class="jumbotron rounded-0 bg-secondary text-white text-center pt-5 justify-content-md-center px-5 mb-n5">
         <div class="container p-3 my-5">
             <div class="row justify-content-center">
@@ -94,9 +91,6 @@
 
     
     </body>
-        <!-- RODAPE -->
-    <?php
-        include "footer.php"
-    ?>
+  
 
 </html>
