@@ -1,12 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <?php
-        $nomeDaPagina = "Tela de Cadastro";
-        include "header.php";
-    ?>
-    <body>
 
-    <!-- TEXTO INICIAL -->
         <div class="jumbotron rounded-0 bg-warning text-white text-center pt-5 justify-content-md-center px-5 mb-n5">
             <div class="container p-3 my-5">
                 <h1 class="display-1 text-uppercase font-weight-bolder text-wrap mx-auto px-5 py-5">pagina 1</h1>
@@ -117,11 +111,7 @@
                 </div>
             </div>
         </div>
-    </body>
-        <!-- RODAPE -->
-    <?php
-        include "footer.php"
-    ?>
+   
 
 
 </html>

@@ -1,9 +1,6 @@
 <!doctype html>
 <html lang="en">
-<?php
-        $nomeDaPagina = "Tela de Cadastro";
-        include "header.php";
-    ?>
+
     <body>
     <!-- CORPO -->
     <div class="jumbotron rounded-0 bg-dark text-white text-center pt-5 justify-content-md-center px-auto">
