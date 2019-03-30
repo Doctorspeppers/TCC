@@ -1,11 +1,4 @@
-<!doctype html>
-<html lang="en">
-
-
-  
-
-
-    <div class="jumbotron rounded-0 bg-secondary text-white text-center pt-5 justify-content-md-center px-5 mb-n5">
+<div class="jumbotron rounded-0 bg-secondary text-white text-center pt-5 justify-content-md-center px-5 mb-n5">
         <div class="container p-3 my-5">
             <div class="row justify-content-center">
                 <div class="col">
@@ -87,10 +80,3 @@
       <p class="text-secondary mb-5"><small>Id maximus ipsum magna sit amet justo. Donec nec dolor eget erat ultricies mollis.</small></p>
       <button type="button" class="btn btn-lg btn-outline-warning font-weight-bolder text-uppercase mt-5 px-4 font-weight-bolder rounded-pill">Contato</button>
     </div>
-
-
-    
-    </body>
-  
-
-</html>

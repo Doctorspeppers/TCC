@@ -1,8 +1,4 @@
-<!doctype html>
-<html lang="en">
-
-    <body>
-    <div class="jumbotron rounded-0 bg-dark text-white text-center pt-5 justify-content-md-center px-auto">
+<div class="jumbotron rounded-0 bg-dark text-white text-center pt-5 justify-content-md-center px-auto">
         <div class="row mx-5">
             <div class="col-sm-4 border rounded bg-white">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMHqYLveTZkZ0zUsXnVPxN13uMlgZNN1Dr-TGwX5XMwaJtjFsk" alt="your icon" class="rounded mx-auto d-block p-3">
@@ -96,8 +92,3 @@
             </div>
         </div>        
     </div>
-    </body>
-
-
-
-</html>
