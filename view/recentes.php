@@ -1,12 +1,5 @@
-<!doctype html>
-<html lang="en">
-
-
-<body>
-
-
-    <!-- NOTICIAS -->
-    <div class="jumbotron rounded-0 bg-dark text-secondary text-center justify-content-md-center px-5">
+<!-- NOTICIAS -->
+<div class="jumbotron rounded-0 bg-dark text-secondary text-center justify-content-md-center px-5">
         <h3 class="display-3 text-uppercase font-weight-bolder text-secondary text-wrap mx-auto px-auto">Itens em alta</h3>
         <h5 class="text-warning font-weight-bolder">Itens com mais visualização nas últimas 72 horas</h5>
         <div class="row my-5 text-center mx-auto">
@@ -39,7 +32,3 @@
             </div>
         </div>
     </div>
-
-
-
-</html>

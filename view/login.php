@@ -1,12 +1,4 @@
-<!doctype html>
-<html lang="en">
-
-
-  <body>
-    
-    
-    
-    <div class="jumbotron rounded-0 p-5 bg-dark row">
+<div class="jumbotron rounded-0 p-5 bg-dark row">
       <div class="container border rounded bg-white col-sm-6 p-5">
         <form>
           <h4 class="display-4 text-secondary">Bem vindo de volta
@@ -40,6 +32,3 @@
         </form>
       </div>
     </div>
-    </body>
-
-</html>
