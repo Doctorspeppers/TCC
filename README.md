@@ -1,11 +1,11 @@
 
-# My undergraduate thesis
+# Aslan: very(fi) prices
 
 <i>
 I am without third year of high school studying an integrated computer technician and for the conclusion of the course it is necessary to make a website with everything that we learned in the 3 years of technician, I hope you like :)
 </i>
 
-## Aslan: very(fi) prices
+## My undergraduate thesis
 
 My first idea for this website was a lot more, exchange value display, making the date of scraping with python (in the institution's curriculum, but could) on money exchange websites (and cryptocoins)
 
