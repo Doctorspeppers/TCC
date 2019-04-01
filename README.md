@@ -1,9 +1,3 @@
-title: [My undergraduate thesis]
-show_downloads: ["true"]
-description: [For host my project of my undergraduate thesis]
-Download:
-  zip_url: https://github.com/Doctorspeppers/TCC/
-  another_url: another value
 
 # My undergraduate thesis
 
@@ -28,3 +22,13 @@ With the help of my friend and collaborator of this thesis, Lara, my first idea 
 <b>Mirian Luiza</b>:Responsible for all documentation, database diagram, functionalities, etc...
 
 <b>Dimitri Miranda</b>:Back-end developer and responsible for database and infrastructure architecture
+
+
+
+
+title: [My undergraduate thesis]
+show_downloads: ["true"]
+description: [For host my project of my undergraduate thesis]
+Download:
+  zip_url: https://github.com/Doctorspeppers/TCC/
+  another_url: another value
