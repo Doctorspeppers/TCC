@@ -1,3 +1,10 @@
+title: [My undergraduate thesis]
+show_downloads: ["true"]
+description: [For host my project of my undergraduate thesis]
+Download:
+  zip_url: https://github.com/Doctorspeppers/TCC/
+  another_url: another value
+
 # My undergraduate thesis
 
 <i>
