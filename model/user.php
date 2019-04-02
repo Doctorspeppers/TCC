@@ -1,20 +1,24 @@
 <?php
 
 include "management.php";
+include "trait_mysql_db.php";
 class User implements Management 
 {
+  use database;
+
   public $id;
   public $name;
   public $email;
   public $gender;
   public $accountCreationDate;
   public $userLevel;
-  protected $database;
+  protected $connection;
   function __construct($parameters)
   {
       /*the object expects an array to be passed with the following items
           $id,$name,$email,$birthDate,$gender,$accountCreationDate,$userLevel
         */
+    
     (string) $this->id = uniqid();
     (string) $this->name = $parameters['name'];
     (string) $this->email = $parameters['email'];
@@ -40,34 +44,7 @@ class User implements Management
 
 
 
-class Hash implements Management
-{
-  public $id;
-  protected $hash;
-  protected $database;
 
-  function __construct($id, $password)
-  {
-    $this->id = $id;
-    $this->hash = md5($password);
-  }
-
-  function hashing()
-  {
-    return $this->hash;
-  }
-
-  function verifyhash()
-  {
-    if (md5($this->password == $hash)){
-      return true;
-    }
-    else
-    {
-      return false;
-    }
-  }
-}
 
 
 ?>

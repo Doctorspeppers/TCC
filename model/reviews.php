@@ -1,7 +1,9 @@
 <?php
 include "management.php";
+include "trait_mysql_db.php";
 class Review implements Management
 {
+  use database;
   protected $idReviews;
   public $title;
   public $author;

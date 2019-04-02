@@ -1,8 +1,11 @@
 <?php
 
 include "management.php";
+include "trait_mysql_db.php";
 class Comments implements Management
 {
+	use database;
+
 	protected $database;
 	public $path;
 	public $userID;

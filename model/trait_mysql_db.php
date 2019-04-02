@@ -3,7 +3,7 @@
 
 
 
-class database{
+trait database{
 
 
     protected $mysql_host;
@@ -11,22 +11,24 @@ class database{
     protected $mysql_password;
     protected $connection;
 
-    function __construct(Type $var = null)
-    {
+    protected function setconnection($mysql_host, $mysql_user, $mysql_password){
         $this->mysql_host = $mysql_host;
         $this->mysql_user = $mysql_user;
         $this->mysql_password = $mysql_password;
     }
 
-    function connect(){
+    protected function connect(){
         $this->connection = new PDO($this->mysql_host, $this->mysql_user, $this->mysql_password);
     }
-
-    function querie($array,$querie){
+    ##Encondings: 
+    ##"/[^0-9a-zA-Z@-Z.]/" only letter, numbers and "@"s, "."s
+    ##"/[^[:alpha:]_]/" only letter, numbers
+    ##"/[^0-9]/" only numbers
+    protected function command($array,$querie,$encoding){
         $stmt = $this->connection->prepare($querie);
         foreach($array as $key => $value){
             ##needs ":key" this format in key
-            $value = preg_replace('/[^[:alpha:]_]/', '',$value);
+            $value = preg_replace($encoding, '',$value);
             $stmt-> bindValue($key, $value);
         }
         $run = $stmt->execute();
@@ -35,7 +37,7 @@ class database{
         return $result;
         }
     
-    function closeConnection(){
+    protected function closeConnection(){
         $this->connection->close();
     }
 
