@@ -1,5 +1,5 @@
 <?php
-
+namespace model;
 interface Management
 {
   
@@ -11,4 +11,3 @@ interface Management
 
 
 
-?>

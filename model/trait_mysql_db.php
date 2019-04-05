@@ -1,5 +1,5 @@
 <?php
-
+namespace model;
 
 
 
@@ -48,4 +48,3 @@ trait database{
 
 
 
-?>

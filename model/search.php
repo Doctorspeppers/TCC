@@ -1,7 +1,8 @@
 <?php
+namespace model;
 
-include "management.php";
-include "trait_mysql_db.php";
+include "model\management.php";
+include "model\trait_mysql_db.php";
 
 class Search implements Management
 {
@@ -10,4 +11,4 @@ class Search implements Management
     protected $database;
 }
 
-?>
+

@@ -1,4 +1,5 @@
 <?php
+namespace model;
 
 include "management.php";
 include "trait_mysql_db.php";
@@ -46,5 +47,3 @@ class User implements Management
 
 
 
-
-?>

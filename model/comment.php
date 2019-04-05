@@ -1,7 +1,7 @@
 <?php
-
-include "management.php";
-include "trait_mysql_db.php";
+namespace model;
+include "model\management.php";
+include "model\trait_mysql_db.php";
 class Comments implements Management
 {
 	use database;
@@ -33,4 +33,3 @@ class Comments implements Management
 }
 
 
-?>

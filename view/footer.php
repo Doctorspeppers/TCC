@@ -1,3 +1,8 @@
+<?php 
+
+namespace view;
+
+?>
 <div class="jumbotron bg-transparent rounded-0 text-center">
       <a href="#" class="mx-auto d-block mb-3 mt-n5">
         <img src="https://tinyurl.com/y55xtzl3" width="120" alt="Logo" class="rounded">

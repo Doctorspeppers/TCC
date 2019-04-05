@@ -1,3 +1,8 @@
+<?php 
+
+namespace view;
+
+?>
 <div class="jumbotron rounded-0 p-5 bg-dark row">
       <div class="container border rounded bg-white col-sm-6 p-5">
         <form>
