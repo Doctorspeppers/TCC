@@ -1,8 +1,7 @@
 <?php
 namespace model;
-include "model\management.php";
-include "model\trait_mysql_db.php";
-class Comments implements Management
+
+class Comments
 {
 	use database;
 
@@ -13,15 +12,19 @@ class Comments implements Management
 	public $comment;
 	public $date;
 	
-	function __construct($path, $userId, $reviewId, $comment, $date=null){
+	function __construct()
+	{	
+		$this->path = null;
+		$this->userId = null;
+		$this->reviewId = null;
+		$this->comment = null;
+	}
+
+	function newComment($comment){
 		/*
 			Define the vars in object for manipulation in others functions
 		*/
 		$formdate = DateTime::createFromFormat('d/m/Y');
-		$this->path = $path;
-		$this->userId = $userId;
-		$this->reviewId = $reviewId;
-		$this->comment = $comment;
 		if($formdate && $formdate->format('d/m/Y') === $date){
 		   $this->date = $date;
 		}else{
@@ -30,6 +33,13 @@ class Comments implements Management
 	}
 
 
+	function setQuerie($querie, $position){
+		$this->QUERIES[$position] = $querie;
+	  }
+	
+	  public function executeQuerie($anyNinfo,$querie,$encoding){
+		$querie = $this->command($andNinfo,$this->$QUERIES[$querie],$encoding);
+	  }
 }
 
 
