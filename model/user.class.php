@@ -42,12 +42,12 @@ class User
     }
   }
 
-  function setQuerie($querie, $position){
-    $this->QUERIES[$position] = $querie;
+  function setQuery($query, $position){
+    $this->QUERIES[$position] = $query;
   }
 
-  public function executeQuerie($anyNinfo,$querie,$encoding){
-    $querie = $this->command($andNinfo,$this->$QUERIES[$querie],$encoding);
+  public function executeQuery($anyNinfo,$query,$encoding){
+    $query = $this->command($andNinfo,$this->$QUERIES[$query],$encoding);
     
   }
 
