@@ -53,9 +53,9 @@ trait database{
             ##needs ":key" this format in key
             if(enconding != NULL){
                 $value = preg_replace($encoding, '',$value);
-                $stmt-> bindValue($key, $value);
+                $stmt-> bindValue(":"+$key, $value);
             }else{
-                $stmt-> bindValue($key, $value);
+                $stmt-> bindValue(":"+$key, $value);
             }
 
         }
