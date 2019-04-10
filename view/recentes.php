@@ -1,3 +1,8 @@
+<?php 
+
+namespace view;
+
+?>
 <!-- NOTICIAS -->
 <div class="jumbotron rounded-0 bg-dark text-secondary text-center justify-content-md-center px-5">
         <h3 class="display-3 text-uppercase font-weight-bolder text-secondary text-wrap mx-auto px-auto">Itens em alta</h3>

@@ -1,3 +1,8 @@
+<?php 
+
+namespace view;
+
+?>
 <div class="jumbotron rounded-0 bg-secondary text-white text-center pt-5 justify-content-md-center px-5 mb-n5">
         <div class="container p-3 my-5">
             <div class="row justify-content-center">
