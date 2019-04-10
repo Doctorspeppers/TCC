@@ -1,5 +1,5 @@
 <?php
-include __DIR__+"..\model\traits\trait_mysql_db.php";
+include __DIR__+"..\model\traits\PDO_db.trait.php";
 include __DIR__+"..\model\user.php";
 
 function NewUser($data)
