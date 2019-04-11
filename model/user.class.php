@@ -25,6 +25,7 @@ class User
     $this->password = NULL;
     $this->accountCreationDate = NULL;
     $this->userLevel = NULL;
+    $this->QUERIES = Null;
   }
 
   public function changeUser($parameters)
@@ -47,21 +48,14 @@ class User
     }
   }
 
-  function setQuery($query, $position){
-    $this->QUERIES[$position] = $query;
-  }
-
-  function ReSetUser($array){
+  public function ReSetUser($array){
     foreach($array as $key=>$value){
       $this->$key = $value;
     }
   }
   
 
-  public function executeQuery($anyNinfo,$query,$encoding){
-    $query = $this->command($andNinfo,$this->$QUERIES[$query],$encoding);
-    return $query;
-  }
+
 
  
 }

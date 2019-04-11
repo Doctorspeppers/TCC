@@ -22,7 +22,7 @@ class Post
   protected $database;
   protected $QUERIES;
 
-  function __construct()
+  public function __construct()
   {
     $this->$title = null;
     $this->$author = null;
@@ -36,7 +36,7 @@ class Post
     $this->$images = null;
   }
 
-  function chagePost($post)
+  public function changePost($post)
   {  
     $this->idPost=uniqid();
     if(isset($post["title"]))(string)$this->$title = $post['title'];
@@ -54,14 +54,6 @@ class Post
     }
   }
 
-  function setQuerie($querie, $position){
-    $this->QUERIES[$position] = $querie;
-  }
-
-  public function executeQuerie($anyNinfo,$querie,$encoding){
-    $querie = $this->command($andNinfo,$this->$QUERIES[$querie],$encoding);
-    
-  }
 }
 
 

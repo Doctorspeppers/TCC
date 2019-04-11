@@ -12,18 +12,18 @@ class Hash
   protected $hash;
   protected $database;
 
-  function __construct($id, $password)
+  public function __construct($id, $password)
   {
     $this->id = $id;
     $this->hash = md5($password);
   }
 
-  function hashing()
+  public function hashing()
   {
     return $this->hash;
   }
 
-  function verifyhash()
+  public function verifyhash()
   {
     if (md5($this->password == $hash)){
       return true;

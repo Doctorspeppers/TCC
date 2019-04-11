@@ -48,6 +48,10 @@ trait config{
             if(is_exists($PDO_type))$this->PDO_type = $PDO_type; 
             if(is_exists($fun_PDO_type))$this->PDO_type = $fun_PDO_type;
         }
+        if($this->QUERIES == Null or $replace == True){
+            if(is_exists($QUERIES))$this->QUERIES = $QUERIES;
+            if(is_exists($fun_QUERIES))$this->QUERIES = $fun_QUERIES;
+        }
                
     }
 }
