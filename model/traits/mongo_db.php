@@ -38,8 +38,6 @@ trait database{
     }
     
     protected function closeConnection(){
-       $this->connection->close()
-    }
-
-        
+       $this->connection->close();
+    }   
 }
