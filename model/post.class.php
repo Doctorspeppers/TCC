@@ -5,6 +5,9 @@ namespace model;
 class Post 
 {
   use database;
+  use config;
+  use log;
+
   protected $idPost;
   public $title;
   public $author;

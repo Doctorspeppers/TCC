@@ -5,7 +5,9 @@ namespace model;
 class User
 {
   use database;
-  
+  use config;
+  use log;
+
   protected $id;
   public $name;
   public $email;

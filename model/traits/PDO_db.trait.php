@@ -60,6 +60,7 @@ trait database{
 
         }
         $run = $stmt->execute();
+    
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt -> closeCursor();
         
