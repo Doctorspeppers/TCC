@@ -4,7 +4,9 @@ namespace model;
 class Comments
 {
 	use database;
-
+  	use config;
+  	use log;
+	
 	protected $database;
 	public $path;
 	public $userID;

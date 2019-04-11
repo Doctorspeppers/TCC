@@ -4,6 +4,10 @@ namespace model;
 
 class Hash 
 {
+  use database;
+  use config;
+  use log;
+
   public $id;
   protected $hash;
   protected $database;
