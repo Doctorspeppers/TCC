@@ -1,7 +1,6 @@
 <?php 
-
 namespace view;
-
+define(__DIR__,"","/var/www/html/TCC");
 ?>
 <!-- NOTICIAS -->
 <div class="jumbotron rounded-0 bg-dark text-secondary text-center justify-content-md-center px-5">

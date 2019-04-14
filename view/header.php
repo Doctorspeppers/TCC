@@ -1,7 +1,6 @@
 <?php 
-
 namespace view;
-
+define(__DIR__,"","/var/www/html/TCC"); 
 ?>
 <head>
     <!-- Required meta tags -->

@@ -1,7 +1,6 @@
 <?php 
-
 namespace view;
-
+define(__DIR__,"","/var/www/html/TCC");
 ?>
 <div class="jumbotron bg-transparent rounded-0 text-center">
       <a href="#" class="mx-auto d-block mb-3 mt-n5">

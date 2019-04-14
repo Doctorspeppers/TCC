@@ -1,6 +1,6 @@
 <?php
 namespace model;
-
+define(__DIR__,"","/var/www/html/TCC");
 class Comments
 {
 	use database;
@@ -35,10 +35,6 @@ class Comments
 	}
 
 
-	function setQuerie($querie, $position){
-		$this->QUERIES[$position] = $querie;
-	  }
-	
 	  public function executeQuerie($anyNinfo,$querie,$encoding){
 		$querie = $this->command($andNinfo,$this->$QUERIES[$querie],$encoding);
 	  }
