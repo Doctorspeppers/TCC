@@ -74,6 +74,17 @@ trait database{
         return $result;
         }
     
+    
+  public function setQuerie($querie, $position){
+    $this->QUERIES[$position] = $querie;
+  }
+
+  public function executeQuerie($anyNinfo,$querie,$encoding){
+    $querie = $this->command($andNinfo,$this->$QUERIES[$querie],$encoding);
+    
+  }
+
+
     protected function closeConnection(){
         $this->connection->close();
     }

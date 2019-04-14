@@ -32,5 +32,4 @@ trait Log{
         return False;
     }
 }
-
 ?>

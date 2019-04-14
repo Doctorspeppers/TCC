@@ -24,6 +24,7 @@ class User
     $this->password = NULL;
     $this->accountCreationDate = NULL;
     $this->userLevel = NULL;
+    $this->QUERIES = Null;
   }
 
   public function changeUser($parameters)
@@ -44,11 +45,6 @@ class User
     {
       $this->accountCreationDate = date("d:m:Y");
     }
-  }
-
-  public function executeQuery($anyNinfo,$query,$encoding){
-    $query = $this->command($andNinfo,$this->$QUERIES[$query],$encoding);
-    return $query;
   }
 
  

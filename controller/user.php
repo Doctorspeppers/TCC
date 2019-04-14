@@ -1,5 +1,5 @@
 <?php
-include __DIR__+"..\model\traits\trait_mysql_db.trait.php";
+include __DIR__+"..\model\traits\trait_mongo_db.trait.php";
 include __DIR__+"..\model\traits\config.trait.php";
 include __DIR__+"..\model\traits\log.trait.php";
 include __DIR__+"..\model\user.php";
