@@ -1,7 +1,6 @@
 <?php 
-
 namespace view;
-
+define(__DIR__,"","/var/www/html/TCC");
 ?>
 <div class="jumbotron rounded-0 bg-dark text-white text-center pt-5 justify-content-md-center px-auto">
         <div class="row mx-5">

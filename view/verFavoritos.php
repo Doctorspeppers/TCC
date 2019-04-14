@@ -1,7 +1,6 @@
 <?php 
-
 namespace view;
-
+define(__DIR__,"","/var/www/html/TCC");
 ?>
 <div class="jumbotron rounded-0 bg-white text-secondary text-center pt-5 justify-content-md-center px-5">
         <p class="text-left text-muted"><a href="#">Categoria</a>><a href="#">Categoria</a>><a href="#">Categoria</a></p>

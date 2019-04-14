@@ -1,6 +1,6 @@
 <?php
 namespace model;
-
+define(__DIR__,"","/var/www/html/TCC");
 class Comments
 {
 	use database;
@@ -27,7 +27,7 @@ class Comments
 		  $this->$key = $value;
 		}
 
-	}
+
 }
 
 

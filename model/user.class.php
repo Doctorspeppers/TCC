@@ -1,6 +1,6 @@
 <?php
 namespace model;
-
+define(__DIR__,"","/var/www/html/TCC");
 
 class User
 {
@@ -14,8 +14,7 @@ class User
   public $gender;
   public $accountCreationDate;
   public $userLevel;
-  protected $QUERIES;
-  protected $connection;
+
   function __construct(){
     $this->id = NULL;
     $this->name = NULL;
@@ -47,15 +46,6 @@ class User
       $this->accountCreationDate = date("d:m:Y");
     }
   }
-
-  public function ReSetUser($array){
-    foreach($array as $key=>$value){
-      $this->$key = $value;
-    }
-  }
-  
-
-
 
  
 }
