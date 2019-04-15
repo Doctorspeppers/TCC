@@ -1,6 +1,6 @@
 <?php
 namespace model;
-define(__DIR__,"","/var/www/html/TCC");
+define(__DIR__,"","/var/www/html");
 
 
 class Search

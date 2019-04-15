@@ -1,5 +1,5 @@
 <?php
-define(__DIR__,"","/var/www/html/TCC");
+define(__DIR__,"","/var/www/html");
 
 class api{
     use database;
