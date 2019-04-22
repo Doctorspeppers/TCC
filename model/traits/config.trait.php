@@ -6,7 +6,6 @@ trait config{
             extract($args, EXTR_PREFIX_SAME, "fun");
         }elseif($file !=Null){
             $fileIniOpen = parse_ini_file($file);
-            extract($fileIniOpen);
         }else{
             return False;
         } 

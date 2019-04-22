@@ -43,7 +43,7 @@ class User
     if(isset($parameters['userLevel']))$this->userLevel = $parameters['userLevel'];
     if (is_null($parameters['accountCreationDate']) == TRUE or $this->accountCreationDate == "") 
     {
-      $this->accountCreationDate = date("d:m:Y");
+      $this->accountCreationDate = date("Y-m-d H:i:s");
     }
   }
 

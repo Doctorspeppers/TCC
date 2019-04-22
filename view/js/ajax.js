@@ -28,13 +28,7 @@
   * Função para enviar os dados
   */
 
-function getIP(){
-    const html = (await (await fetch("https://api.ipify.org/?")).text()); // html as text
-    const doc = new DOMParser().parseFromString(html, 'text/html');
-    return getElementsByTagName("pre").textContent
-  
 
-}
 
 
 
@@ -44,19 +38,25 @@ function getIP(){
     var request = arguments[0]//Objeto/Dicionario do que deve ser mandado
     var result = document.getElementById("Resultado");//Onde deve aparecer a resposta
     var xmlreq = creatRequqestRequest();
+    var token = (function getToken(){cookie.get("token")})();
+    var ip = (function getIP(){
+        const html = (await (await fetch("https://api.ipify.org/?")).text()); // html as text
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        return getElementsByTagName("pre").textContent
+    })();
     if(xmlreq != false){
         // Exibi a imagem de progresso
         result.innerHTML = '<img src="Progresso1.gif"/>';
 
-        xmlrq.open('POST', service+"?token="+token+"&ip="+getIP());//pegando o ip e criando a requisição
+        xmlrq.open('POST', service+"?token="+token+"&ip="+ip);//pegando o ip e criando a requisição
         xmlrq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xmlrq.onload = function() {
+        xmlrq.onload = (function() {
             if (xmlreq.status == 200) {
                 result.innerHTML = xmlreq.responseText;//A resposta
             }else{
                 result.innerHTML = "Erro: " + xmlreq.statusText;//Caso de erro
             }
-        };  
+        })();  
         var data = JSON.stringify(request);
         xhr.send(data);
     };

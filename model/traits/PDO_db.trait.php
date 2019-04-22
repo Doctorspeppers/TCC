@@ -93,13 +93,6 @@ trait database{
     function setQuery($query, $position){
         $this->QUERIES[$position] = $query;
       }
-    
-      function ReSetUser($array){
-        foreach($array as $key=>$value){
-          $this->$key = $value;
-        }
-      }
-          
 
 }
 

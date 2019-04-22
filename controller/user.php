@@ -35,10 +35,10 @@ function LoginUser($array){
     $user->SetConfigs($file="../config/user.ini");
     try{
     $user->setconnection($db_type="mysql",$PDO_host="localhost",$PDO_dbname="",$PDO_port=3306, $PDO_user="user", $PDO_password="user");
-    $param = $user->executeQuery(["email"=>$array["email"]],"login",$encoding);
-    $user->LogQuery($queryName, $user,$result);
-    $user->ReSetUser($param);
+    $param = $user->executeQuery(["email"=>$array["email"],"password"=>md5($array["password"])],"login",$encoding);
     if($user->email==$array["email"] && $user->password == md5($array["password"])){
+        $user->ReSetUser($param);
+        $user->LogQuery($queryName, $user,$result);
         return [True, $user];
     }else{
         return [False];

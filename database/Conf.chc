@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<APP><CONFIGURACAO>
+    <Configuracoes>
+      <dirLogico Valor="Z:\var\www\html\TCC\database\"/>
+      <dirConceitual Valor="Z:\var\www\html\TCC\database\"/>
+      <showLHint Valor="True"/>
+      <Tempo Valor="5"/>
+      <ExibirLog Valor="False"/>
+    </Configuracoes>
+    <Arquivos>
+      <Arq01 Valor="Z:\VAR\WWW\HTML\TCC\DATABASE\TCC_MODELO.BRM"/>
+      <Arq02 Valor=""/>
+      <Arq03 Valor=""/>
+      <Arq04 Valor=""/>
+      <Arq05 Valor=""/>
+    </Arquivos>
+  </CONFIGURACAO><AJUDA>
+    <Flash>##&#13;
+## Carlos H. Cândido&#13;
+## Ajuda rápida do sistema.&#13;
+## &#13;
+[NOME MODELO]&#13;
+[NOME]&#13;
+Descrição/identificação do objeto.&#13;
+[TEXTO TEXTO]&#13;
+[PAPEL]&#13;
+Descrição do papel da cardinalidade (descrição/observação).&#13;
+[ALINHAMENTOLT]&#13;
+Reposiciona o controle quanto a posição no modelo (esquerda ou direita).&#13;
+[ALINHAMENTOWH]&#13;
+Reposiciona o controle quanto a altura ou largura.&#13;
+[OBS]&#13;
+Algo importante a ser anotado para posterior observação.&#13;
+[ID]&#13;
+Identificador único do objeto no modelo.&#13;
+[Auto Relacionado]&#13;
+A entidade está auto relacionada&#13;
+[Especializada]&#13;
+A entidade está especializada&#13;
+[Ent. Ass. Relação: Nome]&#13;
+Nome do relacionamento contido na entidade associativa&#13;
+[Ent. Ass. Relacão: Dicionario]&#13;
+Dicionário de dados do relacionamento contido na entidade associativa&#13;
+[Ent. Ass. Relação: Observacao]&#13;
+Algo importante a ser anotado para posterior observação sobre o relacionamento contido na entidade associativa&#13;
+[Card. Fixar posição]&#13;
+Fixar posição: Se fixada, a cardinalidade não se moverá ao mover-se a entidade ou relacionamento ao qual ela esteja vinculada.&#13;
+[Card. Posição da Linha]&#13;
+Alinhamento da fixação da cardinalidade&#13;
+[Card. Tamanho aut.]&#13;
+Controle do tamanho do desenho da cardinalidade&#13;
+[Entidade fraca]&#13;
+Tipo de entidade&#13;
+[Cardinalidade]&#13;
+[Atrib. tamanho aut.]&#13;
+Controle do tamanho do desenho do atributo&#13;
+[Atrib. Desvio]&#13;
+Desvia o encaixe da ligação do atributo ao relacionamento (desvio em pontos)&#13;
+[Posicionamento]&#13;
+Alinhamento da fixação do atributo&#13;
+[Identificador]&#13;
+O atributo pode ser identificador, Opcional, composto e/ou multivalorado&#13;
+[Opcional]&#13;
+O atributo pode ser identificador, Opcional, composto e/ou multivalorado&#13;
+[Composto]&#13;
+O atributo pode ser identificador, Opcional, composto e/ou multivalorado&#13;
+[Multivalorado]&#13;
+O atributo pode ser identificador, Opcional, composto e/ou multivalorado&#13;
+[Card. Mínima]&#13;
+Cardinalidade mínima do atributo.&#13;
+Ex: (1, n), neste caso o "1"&#13;
+[Card. Máxima]&#13;
+Cardinalidade máxima do atributo.&#13;
+Ex: (1, n), neste caso o "n"&#13;
+[TipoDoValor]&#13;
+Tipo do atributo, podendo ser por exemplo: Texto(n), Número(n), boleano e etc. (ou qualquer outro definido pelo usuário)&#13;
+[Exclusiva]&#13;
+Especialização exclusiva (onde A é B "ou" C) não exclusiva (A pode ser B e/ou C)&#13;
+[Esp. Parcial]&#13;
+Especialização parcial&#13;
+[Chave Primária]&#13;
+[Chave Estrangeira]&#13;
+[Tipo]&#13;
+Tipo de dado no modelo&#13;
+[TabOrigem]&#13;
+Integridade referencial: Tabela de origem do campo chave estrangeira.&#13;
+[CampoOrigem]&#13;
+Integridade referencial: Campo de origem da chave estrangeira.&#13;
+[Posição (Índice)]&#13;
+Ordenamento do campo dentro a tabela&#13;
+[Cor]&#13;
+[Qtd. Campos]&#13;
+[Texto TamAuto]&#13;
+[Texto Cor]&#13;
+[Moldura]&#13;
+Forma de desenho da moldura do texto.&#13;
+[Alin. Texto]&#13;
+[RPOSISETA]&#13;
+Posiciona uma seta ao lado do relacionamento para enfatizar a melhor direção de leitura do diagrama&#13;
+[TBComplemento]&#13;
+Mineumônico de um complemento que, no futuro, poderá ser convertido em DDL para a futura tabela.&#13;
+[CPComplemento]&#13;
+Mineumônico de um complemento que, no futuro, poderá ser convertido em DDL para o futuro campo.&#13;
+[TBChaves]&#13;
+Chave(s) primária da tabela (nesta ordem).&#13;
+[OnUpdate]&#13;
+DDL ansi 2003: em caso de update na tabela pai, o que deverá acontecer.&#13;
+[OnDelete]&#13;
+DDL ansi 2003: em caso de exclusão na tabela pai, o que deverá acontecer.&#13;
+[TBcOrdem]&#13;
+Ordem de conversão da tabela para o modelo físico.&#13;
+</Flash>
+  </AJUDA></APP>

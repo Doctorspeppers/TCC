@@ -19,23 +19,6 @@ define(__DIR__,"","/var/www/html/TCC");
                 <img src="https://tinyurl.com/y55xtzl3" width="120" alt="Logo">
             </a>
         </ul>
-        <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav ml-auto">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contato</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Info</a>
-                        </li>
-                    </ul>
-                </div>
-            </ul>
-        </div>
         <form class="navbar-nav">
             <div class="form-group my-auto">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">
@@ -45,6 +28,15 @@ define(__DIR__,"","/var/www/html/TCC");
             <ul class="navbar-nav ml-auto">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Info</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Login</a>
                         </li>
@@ -55,9 +47,7 @@ define(__DIR__,"","/var/www/html/TCC");
                 </div>
             </ul>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+        
     </nav>
 
     <!-- NOTICIAS -->
