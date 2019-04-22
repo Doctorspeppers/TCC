@@ -4,9 +4,10 @@ define(__DIR__,"","/var/www/html");
 
 class User
 {
-  use database;
+  use db;
   use config;
   use log;
+  use auth;
 
   protected $id;
   public $name;
@@ -32,8 +33,7 @@ class User
       /*the object expects an array to be passed with the following items
           $id,$name,$email,$birthDate,$gender,$accountCreationDate,$userLevel
         */
-    
-    (string) $this->id = uniqid();
+        if(isset($parameters['id']))(string) $this->id = $parameters['id'];
     if(isset($parameters['name']))(string) $this->name = $parameters['name'];
     if(isset($parameters['email']))(string) $this->email = $parameters['email'];
     if(isset($parameters['password']))$this->password = md5($parameters["password"]);

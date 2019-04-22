@@ -5,7 +5,7 @@ define(__DIR__,"","/var/www/html");
 
 class Search
 {
-    use database;
+    use db;
     use config;
     use log;
 

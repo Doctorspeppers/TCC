@@ -3,7 +3,7 @@ namespace model;
 define(__DIR__,"","/var/www/html");
 class Comments
 {
-	use database;
+	use db;
   	use config;
   	use log;
 	

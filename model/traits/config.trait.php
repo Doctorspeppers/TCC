@@ -1,5 +1,6 @@
 <?php
-
+namespace traits;
+define(__DIR__,"","/var/www/html");
 trait config{
     public function SetConfigs($args=Null,$file=Null,$replace=False){
         if($args!=Null){

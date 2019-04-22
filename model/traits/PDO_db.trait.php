@@ -1,6 +1,6 @@
 <?php
 namespace traits;
-
+define(__DIR__,"","/var/www/html");
 
 
 trait database{

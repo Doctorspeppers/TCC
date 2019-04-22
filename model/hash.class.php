@@ -4,7 +4,7 @@ define(__DIR__,"","/var/www/html");
 
 class Hash 
 {
-  use database;
+  use db;
   use config;
   use log;
 
