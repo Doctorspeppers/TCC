@@ -1,6 +1,11 @@
 <?php
+<<<<<<< HEAD
 
 
+=======
+namespace traits;
+define(__DIR__,"","/var/www/html");
+>>>>>>> 0.8AlphaVersion
 
 
 trait database{

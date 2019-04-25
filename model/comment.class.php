@@ -3,7 +3,7 @@ namespace model;
 
 class Comments
 {
-	use database;
+	use db;
   	use config;
   	use log;
 	

@@ -163,7 +163,7 @@ CREATE TABLE `User` (
   `emailUser` varchar(50) NOT NULL,
   `permissionUser` int(1) NOT NULL DEFAULT 1,
   `birthDateUser` date NOT NULL,
-  `dateCreationUser` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `dateCreationUser` timestamp NOT NULL,
   `passwordUser` varchar(32) NOT NULL,
   `genderUser` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

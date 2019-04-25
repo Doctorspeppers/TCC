@@ -4,7 +4,7 @@ namespace model;
 
 class Post 
 {
-  use database;
+  use db;
   use config;
   use log;
 

@@ -2,9 +2,10 @@
 
 
 class api{
-    use database;
+    use db;
     use log;
     use config;
+    use auth;
     public $requisition;
     protected $content;
     protected $hashAuth;
@@ -13,29 +14,23 @@ class api{
     public function __construct($type_requesition, $requesition,$encoding)
     {
         $this->requisition = $requisition;
-        header("Content-Type: application/json");
         // build a PHP variable from JSON sent using POST method
-        if($requesition == "POST"){
+        if($this->$requesition == "POST"){
+            header("Content-Type: application/json");
             $this->content["data"] = json_decode(stripslashes(file_get_contents("php://input")));
             $this->content["auth"] = json_decode(stripslashes($_GET["auth"]));
+            $this->content["ip"] = json_decode(stripslashes($_GET["ip"]));
         }elseif($requisition == "GET"){
             $this->content["data"] = json_decode(stripslashes($_GET["data"]));
             $this->content["auth"] = json_decode(stripslashes($_GET["auth"]));
+            $this->content["ip"] = json_decode(stripslashes($_GET["ip"]));
         }else{
             return false;
         }
         $this->content["data"] = preg_replace($encoding, '',$value);
+        $this->content["auth"] = preg_replace("/[^[:alpha:]_]/", '',$this->content["auth"]);
+        $this->content["ip"] = preg_replace("/[^0-9a-zA-Z.]/", '',$this->content["ip"]);
     } 
-
-    public function VerifyAuth($queryName){
-        $this->hashAuth = ["token"=>md5("".$this->content["auth"]["ip"]."-".$this->content["auth"]["token"])];
-        $result = $this->command($hashAuth,$queryName,$encoding=NULL);
-        if (len($result)>1 or !$result or $result == FALSE){
-            $this->auth =  False;
-        }elseif($result["hashAuth"] == $this->hashAuth){
-            $this->auth = True;
-        }
-    }
 
     public function result($requisition_response){
         if($type_requesition == "POST" && $this->auth = True){
