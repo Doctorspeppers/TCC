@@ -2,8 +2,9 @@
 
 
 include "../model/user.class.php";
-
-
+/*
+@data array ["nameUser"=>"","email"=>,"birthDateUser"=>,"passwordUser"=>, "genderUser"=>]
+*/
 function newUser($data)
 {
     $user = new User();
@@ -19,7 +20,9 @@ function newUser($data)
         $user->logError($e);
         return False;
     }
-}   
+}
+
+
 /* 
 @param $array = ["email"=>$email,"password"=>$password]
 */

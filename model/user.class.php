@@ -1,6 +1,5 @@
 <?php
 define(__DIR__,"","/var/www/html");
-<<<<<<< HEAD
 include "traits/PDO_db.trait.php";
 include "traits/config.trait.php";
 include "traits/log.trait.php";
@@ -17,22 +16,6 @@ class User{
   public $genderUser;
   public $dateCreationUser;
   public $permissionUser;
-=======
-
-class User
-{
-  use db;
-  use config;
-  use log;
-  use auth;
-
-  protected $id;
-  public $name;
-  public $email;
-  public $gender;
-  public $accountCreationDate;
-  public $userLevel;
->>>>>>> 0.8AlphaVersion
 
   function __construct(){
     $this->idUser = NULL;
