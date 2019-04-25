@@ -1,26 +1,19 @@
 <?php
-include __DIR__+"..\model\traits\trait_mongo_db.trait.php";
-include __DIR__+"..\model\traits\config.trait.php";
-include __DIR__+"..\model\traits\log.trait.php";
-include __DIR__+"..\model\user.php";
 
 
+include "../model/user.class.php";
 
-function NewUser($data)
+
+function newUser($data)
 {
     $user = new User();
-    $user->SetConfigs($file="../config/user.ini");
+
+    $user->SetConfigs($file=__DIR__."/../config/user.ini");
     try{
         $user->NewUser($data);
-        foreach((array)$user as $key => $value){
-            if($value == NULL){
-                return false;
-            }
-        }
-        $user->setQuery("","newUser");
-        $user->setconnection($db_type="mysql",$PDO_host="localhost",$PDO_dbname="",$PDO_port=3306, $PDO_user="user", $PDO_password="user");
-        $result = $user->executeQuery((array)$user,"newUser",$encoding);
-        $user->LogQuery($queryName, $user,$result);
+       
+        $result = $user->executeQuery($data,"newUser",["/[^0-9a-zA-Z@-Z.]/"]);
+        #$user->LogQuery("newUser", $user,$result);
         return $result;
     }catch(Exception $e){
         $user->logError($e);
@@ -31,14 +24,13 @@ function NewUser($data)
 @param $array = ["email"=>$email,"password"=>$password]
 */
 function LoginUser($array){
-    $user = new User();
+    $user = new model\User();
     $user->SetConfigs($file="../config/user.ini");
     try{
-    $user->setconnection($db_type="mysql",$PDO_host="localhost",$PDO_dbname="",$PDO_port=3306, $PDO_user="user", $PDO_password="user");
     $param = $user->executeQuery(["email"=>$array["email"],"password"=>md5($array["password"])],"login",$encoding);
     if($user->email==$array["email"] && $user->password == md5($array["password"])){
         $user->ReSetUser($param);
-        $user->LogQuery($queryName, $user,$result);
+        #$user->LogQuery("selectUser", $user,"/[^0-9a-zA-Z@-Z.]/");
         return [True, $user];
     }else{
         return [False];
@@ -49,18 +41,33 @@ function LoginUser($array){
     }   
 }
 
-function ChangeInfo($array){
-    $user = new User();
+function updateUser($array){
+    $user = new model\User();
     $user->SetConfigs($file="../config/user.ini");
     try{
-    $user->ReSetUser((array)$array);
-    $user->setQuery("","changeinfo");
-    $user->setconnection($db_type="mysql",$PDO_host="localhost",$PDO_dbname="",$PDO_port=3306, $PDO_user="user", $PDO_password="user");
-    $result = $user->executeQuery((array)$user,"changeinfo",$encoding);
-    $user->LogQuery($queryName, $user,$result);
-    return $result;
+        $result = $user->executeQuery((array)$user,"updateUser","/[^0-9a-zA-Z@-Z.]/");
+        #$user->LogQuery("updateUser", $user,$result);
+        return $result;
     }catch(Exception $e){
         $user->logError($e);
         return False;
     }
 }
+
+function getUser($array){
+        $user = new User();
+        $user->SetConfigs($file="../config/user.ini");
+        try{
+            $result = $user->executeQuery($array,"selectUser","/[^0-9a-zA-Z@-Z.]/");
+            #$user->LogQuery("updateUser", $user,$result);
+            return $result;
+        }catch(Exception $e){
+            $user->logError($e);
+            return False;
+        }
+    
+}
+
+$user = ['emailUser'=>"pedro@doutor",'passwordUser'=>"tes2"];
+$result = getUser($user);
+var_dump($result);

@@ -1,6 +1,6 @@
 <?php
 namespace model;
-define(__DIR__,"","/var/www/html");
+
 
 class Post 
 {
@@ -50,7 +50,7 @@ class Post
     if(isset($post["views"]))(string)$this->$views = $post['views'];
     if(isset($post["images"]))(string)$this->$images = $post['images'];
     if (is_null($this->date) == TRUE) {
-        $this->date = date("d:m:Y");
+        $this->date = date("Y-m-d H:i:s");
     }
   }
 

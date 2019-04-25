@@ -126,10 +126,10 @@ CREATE TABLE `Relationship` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `store`
+-- Estrutura da tabela `Store`
 --
 
-CREATE TABLE `store` (
+CREATE TABLE `Store` (
   `idStore` int(10) NOT NULL,
   `urlStore` text NOT NULL,
   `descStore` text NOT NULL,
@@ -154,10 +154,10 @@ CREATE TABLE `Token` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `user`
+-- Estrutura da tabela `User`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `User` (
   `idUser` int(10) NOT NULL,
   `nameUser` varchar(25) NOT NULL,
   `emailUser` varchar(50) NOT NULL,
@@ -195,7 +195,7 @@ ALTER TABLE `Category_has_Item`
 ALTER TABLE `Comment`
   ADD PRIMARY KEY (`idComment`),
   ADD UNIQUE KEY `idComment_UNIQUE` (`idComment`),
-  ADD KEY `fk_Comment_user1_idx` (`fk_idUser`),
+  ADD KEY `fk_Comment_User1_idx` (`fk_idUser`),
   ADD KEY `fk_Comment_Item1_idx` (`fk_idItem`);
 
 --
@@ -228,7 +228,7 @@ ALTER TABLE `Item`
 ALTER TABLE `Price`
   ADD PRIMARY KEY (`idPrice`),
   ADD UNIQUE KEY `idPrice_UNIQUE` (`idPrice`),
-  ADD KEY `fk_Price_store1_idx` (`fk_idStore`),
+  ADD KEY `fk_Price_Store1_idx` (`fk_idStore`),
   ADD KEY `fk_Price_Item1_idx` (`fk_idItem`);
 
 --
@@ -238,12 +238,12 @@ ALTER TABLE `Relationship`
   ADD PRIMARY KEY (`idRelationship`),
   ADD UNIQUE KEY `idListFriends_UNIQUE` (`idRelationship`),
   ADD KEY `fk_idUser` (`fk_idUser`),
-  ADD KEY `fk_listFriends_user1_idx` (`fk_idFriend`);
+  ADD KEY `fk_listFriends_User1_idx` (`fk_idFriend`);
 
 --
--- Indexes for table `store`
+-- Indexes for table `Store`
 --
-ALTER TABLE `store`
+ALTER TABLE `Store`
   ADD PRIMARY KEY (`idStore`),
   ADD UNIQUE KEY `idStore_UNIQUE` (`idStore`);
 
@@ -253,12 +253,12 @@ ALTER TABLE `store`
 ALTER TABLE `Token`
   ADD PRIMARY KEY (`idToken`),
   ADD UNIQUE KEY `idToken_UNIQUE` (`idToken`),
-  ADD KEY `fk_Token_user1_idx` (`fk_idUser`);
+  ADD KEY `fk_Token_User1_idx` (`fk_idUser`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `User`
 --
-ALTER TABLE `user`
+ALTER TABLE `User`
   ADD PRIMARY KEY (`idUser`),
   ADD UNIQUE KEY `idUser_UNIQUE` (`idUser`);
 
@@ -315,9 +315,9 @@ ALTER TABLE `Relationship`
   MODIFY `idRelationship` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `store`
+-- AUTO_INCREMENT for table `Store`
 --
-ALTER TABLE `store`
+ALTER TABLE `Store`
   MODIFY `idStore` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -327,9 +327,9 @@ ALTER TABLE `Token`
   MODIFY `idToken` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `User`
 --
-ALTER TABLE `user`
+ALTER TABLE `User`
   MODIFY `idUser` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -348,13 +348,13 @@ ALTER TABLE `Category_has_Item`
 --
 ALTER TABLE `Comment`
   ADD CONSTRAINT `fk_Comment_Item1` FOREIGN KEY (`fk_idItem`) REFERENCES `Item` (`idItem`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Comment_user1` FOREIGN KEY (`fk_idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Comment_User1` FOREIGN KEY (`fk_idUser`) REFERENCES `User` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `Favorites`
 --
 ALTER TABLE `Favorites`
-  ADD CONSTRAINT `Favorites_ibfk_1` FOREIGN KEY (`fk_idUser`) REFERENCES `user` (`idUser`),
+  ADD CONSTRAINT `Favorites_ibfk_1` FOREIGN KEY (`fk_idUser`) REFERENCES `User` (`idUser`),
   ADD CONSTRAINT `Favorites_ibfk_2` FOREIGN KEY (`fk_idItem`) REFERENCES `Item` (`idItem`);
 
 --
@@ -368,20 +368,20 @@ ALTER TABLE `Image`
 --
 ALTER TABLE `Price`
   ADD CONSTRAINT `fk_Price_Item1` FOREIGN KEY (`fk_idItem`) REFERENCES `Item` (`idItem`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Price_store1` FOREIGN KEY (`fk_idStore`) REFERENCES `store` (`idStore`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Price_Store1` FOREIGN KEY (`fk_idStore`) REFERENCES `Store` (`idStore`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `Relationship`
 --
 ALTER TABLE `Relationship`
-  ADD CONSTRAINT `fk_listFriends_user1` FOREIGN KEY (`fk_idFriend`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `listFriends_ibfk_1` FOREIGN KEY (`fk_idUser`) REFERENCES `user` (`idUser`);
+  ADD CONSTRAINT `fk_listFriends_User1` FOREIGN KEY (`fk_idFriend`) REFERENCES `User` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `listFriends_ibfk_1` FOREIGN KEY (`fk_idUser`) REFERENCES `User` (`idUser`);
 
 --
 -- Limitadores para a tabela `Token`
 --
 ALTER TABLE `Token`
-  ADD CONSTRAINT `fk_Token_user1` FOREIGN KEY (`fk_idUser`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_Token_User1` FOREIGN KEY (`fk_idUser`) REFERENCES `User` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

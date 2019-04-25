@@ -1,5 +1,4 @@
 <?php
-namespace traits;
 
 
 trait database{
@@ -23,11 +22,7 @@ trait database{
     }
 
     protected function insertOne($array){
-    $result = $this->connection->insertOne([
-    'username' => 'admin',
-    'email' => 'admin@example.com',
-    'name' => 'Admin User',
-	]);
+    $result = $this->connection->insertOne($array);
     return $result;
     }
 

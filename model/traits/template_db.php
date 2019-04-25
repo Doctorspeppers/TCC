@@ -1,5 +1,5 @@
 <?php
-namespace traits;
+
 
 
 trait database{

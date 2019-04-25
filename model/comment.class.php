@@ -1,6 +1,6 @@
 <?php
 namespace model;
-define(__DIR__,"","/var/www/html");
+
 class Comments
 {
 	use database;
@@ -22,12 +22,8 @@ class Comments
 		$this->comment = null;
 	}
 
-	public function ReSetComment($array){
-		foreach($array as $key=>$value){
-		  $this->$key = $value;
-		}
+	
 
 
-}
 }
 

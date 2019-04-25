@@ -16,15 +16,15 @@ trait token{
     public function newToken($ip,$timeToken,$idUser, $QUERY,$forThis=True)
     {
         $token = md5(rand());
-        $hashIPToken = $token."".md5($ip);
+        $hashIPToken = md5($token."".md5($ip));
         $dateCreationToken = date("Y-m-d H:i:s");
         $expireDate = new DateTime($dateCreationToken);
         $expireDate->add(new DateInterval($timeToken));
         $expireDate =  $expireDate->format('Y-m-d H:i:s');
         $this->command(['token'=>$token,'hashIPToken'=>$hashIPToken,'dateCreationToken'=>$dateCreationToken,'expireDateToken'=>$expireDateToken,'idUser'=>$idUser],'newToken',"/[^[:alpha:]_]/");
-        if($forthis==False){
+        if($forThis==False){
             return getToken($token,$hashIPToken);
-        }elseif($forthis==True){
+        }elseif($forThis==True){
             $tempObj = getToken($token,$hashIPToken);
             $this->idToken = $tempObj["token"];
             $this->token = $token;
@@ -35,7 +35,7 @@ trait token{
         }
     }
 
-    protected function getToken($token,$hashIpToken){
+    protected function getToken($token,$hashIpToken):?array{
         return $this->comand(["token"=>$token,"hashIpToken"=>$hashIpToken],"getToken","/[^[:alpha:]_]/");
     }
     
