@@ -3,12 +3,14 @@ define(__DIR__,"","/var/www/html");
 include "traits/PDO_db.trait.php";
 include "traits/config.trait.php";
 include "traits/log.trait.php";
-include "traits/hash.trait.php";
+include "traits/token_auth.trait.php";
+
 class User{
   use database;
   use config;
   use log;
-  use hash;
+  use auth;
+
   protected $idUser;
   public $nameUser;
   public $emailUser;
@@ -16,6 +18,7 @@ class User{
   public $genderUser;
   public $dateCreationUser;
   public $permissionUser;
+  public $passwordUser;
 
   function __construct(){
     $this->idUser = NULL;
@@ -40,41 +43,22 @@ class User{
     if(isset($parameters['emailUser']))(string) $this->emailUser = $parameters['emailUser'];
     if(isset($parameters['passwordUser']))$this->passwordUser = $parameters["passwordUser"];
     if(isset($parameters['genderUser']))(string) $this->genderUser = $parameters['genderUser'];
-    if(isset($parameters['birthDateUser']))$this->birthDateUser = new \DateTime($parameters['$birthDateUser']);
+    if(isset($parameters['birthDateUser']))$this->birthDateUser = new \DateTime($parameters['birthDateUser']);
     if(isset($parameters['birthDateUser']))$this->birthDateUser = $this->birthDateUser->format('YYYY-MM-DD');
     if(isset($parameters['dateCreationUser']))(string) $this->dateCreationUser = $parameters['dateCreationUser'];
     if(isset($parameters['permissionUser']))$this->permissionUser = $parameters['permissionUser'];
     
   }
 
-  public function newUser($parameters)
+  public function convertParams($parameters)
   {
       /*the object expects an array to be passed with the following items
           $idUser,$nameUser,$emailUser,$birthDateUser,$genderUser,$dateCreationUser,$permissionUser
         */
-<<<<<<< HEAD
-    
-    if(isset($parameters['nameUser']))(string) $this->nameUser = $parameters['nameUser'];
-    if(isset($parameters['emailUser']))(string) $this->emailUser = $parameters['emailUser'];
-    if(isset($parameters['passwordUser']))$this->passwordUser = md5($parameters["passwordUser"]);
-    if(isset($parameters['genderUser']))(string) $this->genderUser = $parameters['genderUser'];
-    if(isset($parameters['birthDateUser']))$this->birthDateUser = new \DateTime($parameters['birthDateUser']);
-    if(isset($parameters['birthDateUser']))$this->birthDateUser = $this->birthDateUser->format('YYYY-MM-DD');
-    
-=======
-        if(isset($parameters['id']))(string) $this->id = $parameters['id'];
-    if(isset($parameters['name']))(string) $this->name = $parameters['name'];
-    if(isset($parameters['email']))(string) $this->email = $parameters['email'];
-    if(isset($parameters['password']))$this->password = md5($parameters["password"]);
-    if(isset($parameters['gender']))(string) $this->gender = $parameters['gender'];
-    if(isset($parameters['birthDate']))(string) $this->$birthDate = $parameters['$birthDate'];
-    if(isset($parameters['accountCreationDate']))(string) $this->accountCreationDate = $parameters['accountCreationDate'];
-    if(isset($parameters['userLevel']))$this->userLevel = $parameters['userLevel'];
-    if (is_null($parameters['accountCreationDate']) == TRUE or $this->accountCreationDate == "") 
-    {
-      $this->accountCreationDate = date("Y-m-d H:i:s");
-    }
->>>>>>> 0.8AlphaVersion
+    if(isset($parameters['passwordUser']))(string)$parameters['passwordUser'] = md5($parameters["passwordUser"]);
+    if(isset($parameters['birthDateUser']))$parameters['birthDateUser'] = new DateTime($parameters['birthDateUser']);
+    if(isset($parameters['birthDateUser']))$parameters['birthDateUser'] = $parameters['birthDateUser']->format('Y-m-d');
+    return $parameters;
   }
 
  

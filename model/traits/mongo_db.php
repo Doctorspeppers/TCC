@@ -9,7 +9,7 @@ trait db{
     protected $connection;
 
     public function setconnection($host, $user, $password, $db_name){
-        $this->mongo_host = $mongo_host;
+        $this->mongo_host = $mhost;
     }
 
     protected function connect(){

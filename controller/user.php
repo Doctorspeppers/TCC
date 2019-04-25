@@ -8,48 +8,51 @@ include "../model/user.class.php";
 function newUser($data)
 {
     $user = new User();
-
     $user->SetConfigs($file=__DIR__."/../config/user.ini");
     try{
-        $user->NewUser($data);
-       
+        $data = $user->convertParams($data);
+        
         $result = $user->executeQuery($data,"newUser",["/[^0-9a-zA-Z@-Z.]/"]);
         #$user->LogQuery("newUser", $user,$result);
         return $result;
     }catch(Exception $e){
-        $user->logError($e);
-        return False;
+        #$user->logError($e);
+        return $e;
     }
 }
 
 
 /* 
-@param $array = ["email"=>$email,"password"=>$password]
+@param $array = ["ip"=>$ip,"email"=>$Useremail,"password"=>$Userpassword]
 */
 function LoginUser($array){
-    $user = new model\User();
+    $user = new User();
     $user->SetConfigs($file="../config/user.ini");
     try{
-    $param = $user->executeQuery(["email"=>$array["email"],"password"=>md5($array["password"])],"login",$encoding);
-    if($user->email==$array["email"] && $user->password == md5($array["password"])){
-        $user->ReSetUser($param);
-        #$user->LogQuery("selectUser", $user,"/[^0-9a-zA-Z@-Z.]/");
-        return [True, $user];
+        $array = $user->convertParams($array);
+        $param = $user->executeQuery($array,"selectUser","/[^0-9a-zA-Z@-Z X]/");
+        
+        #var_dump($array["passwordUser"]);
+        if($param[0]["passwordUser"] == $array["passwordUser"] && $param[0]["passwordUser"] == $array["passwordUser"]){
+            $user->changeUser($param[0]);
+            $user->newToken($array["ip"],"PT12H00S","newToken");
+            #$user->LogQuery("selectUser", $user,"/[^0-9a-zA-Z@-Z X]/");
+            return [True, $user];
     }else{
         return [False];
     }
     }catch(Exception $e){
         $user->logError($e);
-        return [False];
+        return $e;
     }   
 }
 
 function updateUser($array){
-    $user = new model\User();
+    $user = new User();
     $user->SetConfigs($file="../config/user.ini");
     try{
-        $result = $user->executeQuery((array)$user,"updateUser","/[^0-9a-zA-Z@-Z.]/");
-        #$user->LogQuery("updateUser", $user,$result);
+        $array = $user->convertParams($array);
+        $result = $user->executeQuery($array,"updateUser","/[^0-9a-zA-Z@-Z X]/");
         return $result;
     }catch(Exception $e){
         $user->logError($e);
@@ -62,7 +65,7 @@ function getUser($array){
         $user->SetConfigs($file="../config/user.ini");
         try{
             $result = $user->executeQuery($array,"selectUser","/[^0-9a-zA-Z@-Z.]/");
-            #$user->LogQuery("updateUser", $user,$result);
+
             return $result;
         }catch(Exception $e){
             $user->logError($e);
@@ -70,7 +73,8 @@ function getUser($array){
         }
     
 }
+#$user = ["nameUser"=>"Pedro","emailUser"=>"pedro@gmail.com","birthDateUser"=>"25-04-2002","passwordUser"=>"test", "genderUser"=>"male"];
+#$result = newUser($user);
+#$user = LoginUser(["emailUser"=>"pedro@gmail.com","passwordUser"=>"test","ip"=>"192.168.123.123"]);
 
-$user = ['emailUser'=>"pedro@doutor",'passwordUser'=>"tes2"];
-$result = getUser($user);
-var_dump($result);
+#var_dump($user);

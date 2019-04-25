@@ -1,7 +1,5 @@
 <?php
-
-
-
+ 
 
 trait database{
 
@@ -49,24 +47,28 @@ trait database{
         }        
     }
     ##Encondings: 
-    ##"/[^0-9a-zA-Z@-Z.]/" only letter, numbers and "@"s, "."s
+    ##"/[^0-9a-zA-Z@-Z X]/" only letter, numbers and "@"s, "."s
     ##"/[^[:alpha:]_]/" only letter, numbers
     ##"/[^0-9]/" only numbers
     protected function command($array,$querie,$encoding=NULL){
         try{
             $this->connect();
             $commandLine = $this->connection->prepare($querie);
+            
             foreach($array as $key => $value){
                 $value = preg_replace($encoding, '',$value);
             }
             foreach($array as $key => $value){
-                $querie = str_replace(":".$key."",$value,$querie);
+                $querie = str_replace(":".$key,$value,$querie);
                 
             }
+            
             $commandLine = $this->connection->prepare($querie);
+           
             $commandLine->execute();
             
             $result = $commandLine->fetchAll();
+            
             return $result;
         }catch (PDOException $e){
             return $e->getMessage();   
