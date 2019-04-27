@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 22-Abr-2019 às 02:16
+-- Generation Time: 27-Abr-2019 às 17:17
 -- Versão do servidor: 10.3.13-MariaDB-1
 -- versão do PHP: 7.3.3-1
 
@@ -151,6 +151,16 @@ CREATE TABLE `Token` (
   `fk_idUser` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `Token`
+--
+
+INSERT INTO `Token` (`idToken`, `token`, `hashIPToken`, `expireDateToken`, `dateCreationToken`, `fk_idUser`) VALUES
+(1, '13ea96aa6bab545f797a0b1d5252c485', 'cb7271ffaab1129ddc7bf55ed9e50f97', '2019-04-26 02:55:22', '2019-04-25 14:55:22', 8),
+(2, '949584f773b5b6777a3a0a22897a72b3', '84e68612d37bde2533698451f5b3b1b9', '2019-04-26 02:56:41', '2019-04-25 14:56:41', 8),
+(3, '56a1cce70dfd0ddb38fdbdb12f18101d', '0ddfd0406054b8bbe729e74f259e11c2', '2019-04-26 02:56:52', '2019-04-25 14:56:52', 8),
+(4, 'ce52169e37985c74d72c8424452904a1', 'dee64467b8804eb4de7335f26b2cea50', '2019-04-26 02:57:30', '2019-04-25 14:57:30', 8);
+
 -- --------------------------------------------------------
 
 --
@@ -163,10 +173,17 @@ CREATE TABLE `User` (
   `emailUser` varchar(50) NOT NULL,
   `permissionUser` int(1) NOT NULL DEFAULT 1,
   `birthDateUser` date NOT NULL,
-  `dateCreationUser` timestamp NOT NULL,
+  `dateCreationUser` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `passwordUser` varchar(32) NOT NULL,
   `genderUser` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `User`
+--
+
+INSERT INTO `User` (`idUser`, `nameUser`, `emailUser`, `permissionUser`, `birthDateUser`, `dateCreationUser`, `passwordUser`, `genderUser`) VALUES
+(8, 'Pedro', 'pedro@gmail.com', 1, '2002-04-25', '2019-04-25 15:40:44', '098f6bcd4621d373cade4e832627b4f6', 'male');
 
 --
 -- Indexes for dumped tables
@@ -324,13 +341,13 @@ ALTER TABLE `Store`
 -- AUTO_INCREMENT for table `Token`
 --
 ALTER TABLE `Token`
-  MODIFY `idToken` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idToken` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `User`
 --
 ALTER TABLE `User`
-  MODIFY `idUser` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idUser` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
