@@ -1,5 +1,6 @@
 <?php
- 
+namespace astrait;
+define(__DIR__,"/var/www/html/TCC",true);
 
 trait database{
 
@@ -22,26 +23,26 @@ trait database{
     protected function connect(){
         switch($this->PDO_type){
             case "mysql":
-                $this->connection = new PDO("mysql:host=$this->PDO_host;dbname=$this->PDO_dbname", $this->PDO_user, $this->PDO_password,array(
-                    PDO::ATTR_EMULATE_PREPARES=>false,
-                    PDO::MYSQL_ATTR_DIRECT_QUERY=>false,
-                    PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
+                $this->connection = new \PDO("mysql:host=$this->PDO_host;dbname=$this->PDO_dbname", $this->PDO_user, $this->PDO_password,array(
+                    \PDO::ATTR_EMULATE_PREPARES=>false,
+                    \PDO::MYSQL_ATTR_DIRECT_QUERY=>false,
+                    \PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
                 ));
                 break;
             case "pgsql":
-                $this->connection = new PDO("pgsql:dbname={$this->PDO_dbname}; user={$this->PDO_user}; password={$this->PDO_password};host{$this->PDO_host};port={$this->PDO_port};");
+                $this->connection = new \PDO("pgsql:dbname={$this->PDO_dbname}; user={$this->PDO_user}; password={$this->PDO_password};host{$this->PDO_host};port={$this->PDO_port};");
                 break;
             case "sqlite":
-                $this->connection = new PDO("sqlite:{$this->PDO_name}");
+                $this->connection = new \PDO("sqlite:{$this->PDO_name}");
                 break;
             case "ibase":
-                $this->connection = new PDO("firebird:dbname={$this->PDO_dbname}",$this->PDO_user,$this->PDO_passowrd);
+                $this->connection = new \PDO("firebird:dbname={$this->PDO_dbname}",$this->PDO_user,$this->PDO_passowrd);
                 break;
             case "oci8":
-                $this->connection = new PDO("oci:dbname={$this->PDO_dbname}",$this->PDO_user,$this->PDO_password);
+                $this->connection = new \PDO("oci:dbname={$this->PDO_dbname}",$this->PDO_user,$this->PDO_password);
                 break;
             case "mssql":
-                $this->connection = new PDO("mssql:host={$this->PDO_host},{$this->PDO_port};dbname={$this->PDO_dbname}");
+                $this->connection = new \PDO("mssql:host={$this->PDO_host},{$this->PDO_port};dbname={$this->PDO_dbname}");
                 break;
 
         }        
@@ -66,11 +67,11 @@ trait database{
             $commandLine = $this->connection->prepare($querie);
            
             $commandLine->execute();
-            
+         
             $result = $commandLine->fetchAll();
             
             return $result;
-        }catch (PDOException $e){
+        }catch (\PDOException $e){
             return $e->getMessage();   
         }
         
@@ -82,8 +83,9 @@ trait database{
   }
 
   public function executeQuery($anyNinfo,$querie,$encoding){
-    $querie = $this->command($anyNinfo,$this->QUERIES[$querie],$encoding);
-    return $querie;
+    $result = $this->command($anyNinfo,$this->QUERIES[$querie],$encoding);
+    $this->LogQuery($querie, $result,$anyNinfo);
+    return $result;
   }
 
 
@@ -91,6 +93,17 @@ trait database{
         $this->connection->close();
     }
 
+    protected function LogQuery($queryName, $result,$anyNinfo)
+    {
+        if(isset($this->logQueryFile)){
+            $date = date("Y-m-d h:m:s");
+            $fileForLog = fopen($this->logErrorFile,"a+");
+            $message = "[{$date}]Query named {$queryName} executed in this form "+$this->QUERIES[$queryName]+"\n with this infos:'".$anyNinfo."'with this result".json_encode($result)."'";
+            fwrite($this->fileforLog, $message);
+            fclose($fileForLog);
+            return True;
+        }
+    }
 
     function setQuery($query, $position){
         $this->QUERIES[$position] = $query;

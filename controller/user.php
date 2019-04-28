@@ -25,27 +25,7 @@ function newUser($data)
 /* 
 @param $array = ["ip"=>$ip,"email"=>$Useremail,"password"=>$Userpassword]
 */
-function LoginUser($array){
-    $user = new User();
-    $user->SetConfigs($file="../config/user.ini");
-    try{
-        $array = $user->convertParams($array);
-        $param = $user->executeQuery($array,"selectUser","/[^0-9a-zA-Z@-Z X]/");
-        
-        #var_dump($array["passwordUser"]);
-        if($param[0]["passwordUser"] == $array["passwordUser"] && $param[0]["passwordUser"] == $array["passwordUser"]){
-            $user->changeUser($param[0]);
-            $user->newToken($array["ip"],"PT12H00S","newToken");
-            #$user->LogQuery("selectUser", $user,"/[^0-9a-zA-Z@-Z X]/");
-            return [True, $user];
-    }else{
-        return [False];
-    }
-    }catch(Exception $e){
-        $user->logError($e);
-        return $e;
-    }   
-}
+
 
 function updateUser($array){
     $user = new User();

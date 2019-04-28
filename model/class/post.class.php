@@ -1,12 +1,12 @@
 <?php
-namespace model;
+namespace asClass;
 
 
 class Post 
 {
-  use db;
-  use config;
-  use log;
+  use traits\db;
+  use traits\config;
+  use traits\log;
 
   protected $idPost;
   public $title;

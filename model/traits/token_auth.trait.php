@@ -1,5 +1,6 @@
 <?php
-
+namespace astrait;
+define(__DIR__,"/var/www/html/TCC",true);
 trait auth{
     private $token;
     private $hashIPToken;
@@ -16,8 +17,8 @@ trait auth{
         $token = md5(rand());
         $hashIPToken = md5($token."".md5($ip));
         $dateCreationToken = date("Y-m-d H:i:s");
-        $expireDate = new DateTime($dateCreationToken);
-        $expireDate->add(new DateInterval($timeToken));
+        $expireDate = new \DateTime($dateCreationToken);
+        $expireDate->add(new \DateInterval($timeToken));
         $expireDate =  $expireDate->format('Y-m-d H:i:s');
         $this->executeQuery(['token'=>$token,'hashIPToken'=>$hashIPToken,
         'dateCreationToken'=>$dateCreationToken,'expireDateToken'=>$expireDate,

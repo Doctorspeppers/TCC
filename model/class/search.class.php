@@ -1,13 +1,13 @@
 <?php
-namespace model;
+namespace asClass;
 define(__DIR__,"","/var/www/html");
 
 
 class Search
 {
-    use db;
-    use config;
-    use log;
+    use traits\db;
+    use traits\config;
+    use traits\log;
 
     protected $database;
 }

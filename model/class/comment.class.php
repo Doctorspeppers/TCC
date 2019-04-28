@@ -1,11 +1,11 @@
 <?php
-namespace model;
+namespace asClass;
 
 class Comments
 {
-	use db;
-  	use config;
-  	use log;
+	use traits\db;
+  	use traits\config;
+  	use traits\log;
 	
 	protected $database;
 	public $path;

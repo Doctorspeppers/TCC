@@ -1,5 +1,6 @@
 <?php
-define(__DIR__,"","/var/www/html");
+namespace astrait;
+define(__DIR__,"/var/www/html/TCC",true);
 trait config{
     public function SetConfigs($file=Null,$arg=Null,$replace=False){
         if($arg != Null){

@@ -1,5 +1,6 @@
 <?php
-
+namespace astrait;
+define(__DIR__,"/var/www/html/TCC",true);
 trait db{
 
 
@@ -9,11 +10,11 @@ trait db{
     protected $connection;
 
     public function setconnection($host, $user, $password, $db_name){
-        $this->mongo_host = $mhost;
+        $this->mongo_host = $host;
     }
 
     protected function connect(){
-        $this->connection = new MongoClient($this->mongo_host);
+        $this->connection = new \MongoClient($this->mongo_host);
     }
 
     protected function selectcollection($database,$collection){
