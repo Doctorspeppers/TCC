@@ -1,8 +1,10 @@
 <?php
 namespace asSuperClass;
-include "../abstractClass/user.abstracclass.php";
+define(__DIR__,"","/var/www/html/TCC");
+include __DIR__."/../abstractclass/user.abstractclass.php";
 
-class normuser implements \asAbstractClass\User{
+
+class normuser extends \asAbstractClass\User{
     public function __construct($configFile)
     {
         \asAbstractClass\User::__construct($configFile);

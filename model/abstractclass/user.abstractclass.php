@@ -1,16 +1,16 @@
 <?php
 namespace asAbstractClass;
-define(__DIR__,"/var/www/html/TCC",True);
-include "../traits/PDO_db.trait.php";
-include "../traits/config.trait.php";
-include "../traits/log.trait.php";
-include "../traits/token_auth.trait.php";
-include "../interaface/user.interface.php";
+define(__DIR__,"","/var/www/html/TCC/");
+include __DIR__."/../traits/PDO_db.trait.php";
+include __DIR__."/../traits/config.trait.php";
+include __DIR__."/../traits/txt_log.trait.php";
+include __DIR__."/../traits/token_auth.trait.php";
+include __DIR__."/../interface/user.interface.php";
 abstract class User implements \asInterface\User{
-  use traits\database;
-  use traits\config;
-  use traits\log;
-  use traits\auth;
+  use \asTrait\database;
+  use \asTrait\config;
+  #use \asTrait\log;
+  use \asTrait\auth;
 
   protected $idUser;
   public $nameUser;
@@ -52,7 +52,7 @@ abstract class User implements \asInterface\User{
     
   }
 
-  public function convertParams(array $parameters): array
+  public static function convertParams($parameters)
   {
       /*the object expects an array to be passed with the following items
           $idUser,$nameUser,$emailUser,$birthDateUser,$genderUser,$dateCreationUser,$permissionUser
@@ -64,7 +64,33 @@ abstract class User implements \asInterface\User{
     return $parameters;
   }
 
-  function LoginUser(str $ip, str $emailUser, str $passwordUser):?bool
+
+  public function newUser($data)
+  {
+      try{
+        
+        $data = $this->convertParams($data);
+        
+        $verify = $this->executeQuery($data,"verifyEmail","/[^0-9a-zA-Z@-Z.]/");
+        if(\sizeof($verify) == 0){
+
+          $result = $this->executeQuery($data,"newUser","/[^0-9a-zA-Z@-Z.]/");
+          return $result;  
+        }else{
+          return False;
+        }
+      }catch(Exception $e){
+          #$user->logError($e);
+        $e->getMessage();
+      }
+  }
+
+  public function DeleteUser($passwordUser){
+    return True;
+  }
+
+
+  function LoginUser( $ip, $emailUser, $passwordUser)
   {
     try{
         
@@ -93,7 +119,7 @@ abstract class User implements \asInterface\User{
     }
   }
 
-  public function UpdateUserInformation(array $informationsChanged, array $data): bool
+  public function UpdateUserInformation($informationsChanged, $data)
   {
     try{
         if(count($informationsChanged) == count($data)){
@@ -124,7 +150,7 @@ abstract class User implements \asInterface\User{
     }
   }
 
-  public function ChangePassword($oldPasswordUser, $newPasswordUser):bool
+  public function ChangePassword($oldPasswordUser, $newPasswordUser)
   {
     try{
       if(strlen($newPasswordUser)> 5){
@@ -134,7 +160,7 @@ abstract class User implements \asInterface\User{
         return False;
       }
   }catch(Exception $e){
-      $this->logError($e);
+      #$this->logError($e);
       return False;
   }
   }

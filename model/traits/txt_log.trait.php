@@ -1,6 +1,6 @@
 <?php
-namespace astrait;
-define(__DIR__,"/var/www/html/TCC",true);
+namespace asTrait;
+
 
 trait log{
     private $logErrorFile;

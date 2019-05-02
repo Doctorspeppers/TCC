@@ -1,6 +1,6 @@
 <?php
-namespace astrait;
-define(__DIR__,"/var/www/html/TCC",true);
+namespace asTrait;
+
 
 trait database{
 
@@ -26,7 +26,7 @@ trait database{
                 $this->connection = new \PDO("mysql:host=$this->PDO_host;dbname=$this->PDO_dbname", $this->PDO_user, $this->PDO_password,array(
                     \PDO::ATTR_EMULATE_PREPARES=>false,
                     \PDO::MYSQL_ATTR_DIRECT_QUERY=>false,
-                    \PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
+                    \PDO::ATTR_ERRMODE=>\PDO::ERRMODE_EXCEPTION
                 ));
                 break;
             case "pgsql":
@@ -57,10 +57,10 @@ trait database{
             $commandLine = $this->connection->prepare($querie);
             
             foreach($array as $key => $value){
-                $value = preg_replace($encoding, '',$value);
+                $value = \preg_replace($encoding, '',$value);
             }
             foreach($array as $key => $value){
-                $querie = str_replace(":".$key,$value,$querie);
+                $querie = \str_replace(":".$key,$value,$querie);
                 
             }
             
@@ -71,7 +71,7 @@ trait database{
             $result = $commandLine->fetchAll();
             
             return $result;
-        }catch (\PDOException $e){
+        }catch (PDOException $e){
             return $e->getMessage();   
         }
         
@@ -82,9 +82,9 @@ trait database{
     $this->QUERIES[$position] = $querie;
   }
 
-  public function executeQuery($anyNinfo,$querie,$encoding){
+  protected function executeQuery($anyNinfo,$querie,$encoding){
     $result = $this->command($anyNinfo,$this->QUERIES[$querie],$encoding);
-    $this->LogQuery($querie, $result,$anyNinfo);
+    #$this->LogQuery($querie, $result,$anyNinfo);
     return $result;
   }
 

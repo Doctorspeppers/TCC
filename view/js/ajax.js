@@ -32,7 +32,7 @@
 
 
 
- function PostRequests(objetct, token){
+ function PostRequests(object, token){
       
     // Declaração de Variáveis
     var request = arguments[0]//Objeto/Dicionario do que deve ser mandado
@@ -48,7 +48,7 @@
         // Exibi a imagem de progresso
         result.innerHTML = '<img src="Progresso1.gif"/>';
 
-        xmlrq.open('POST', service+"?token="+token+"&ip="+ip);//pegando o ip e criando a requisição
+        xmlrq.open('POST', service+"?token="+token+"&ip="+ip+"&command="+command);//pegando o ip e criando a requisição
         xmlrq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xmlrq.onload = (function() {
             if (xmlreq.status == 200) {

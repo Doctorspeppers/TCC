@@ -1,8 +1,9 @@
 <?php
 namespace asClass;
-include "../suplerclass/admin.superclass.php";
+define(__DIR__,"","/var/www/html/TCC");
+include __DIR__."/../superclass/normuser.superclass.php";
 
-class moderetor extends \asSuperClass\normuser{
+class nonPaymentUser extends \asSuperClass\normuser{
     public function __construct($configFile)
     {
         parent::__construct($configFile);
