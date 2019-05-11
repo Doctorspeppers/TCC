@@ -90,11 +90,11 @@ abstract class User implements \asInterface\User{
   }
 
 
-  function LoginUser( $ip, $emailUser, $passwordUser)
+  function LoginUser($ip,$array)
   {
     try{
         
-        $array = $this->convertParams(["ip"=>$ip,"emailUser"=>$emailUser,"passwordUser"=>$passwordUser]);
+        $array = $this->convertParams($array);
         $param = $this->executeQuery($array,"selectUser","/[^0-9a-zA-Z@-Z X]/");
         if($param[0]["emailUser"] == $array["emailUser"] && $param[0]["passwordUser"] == $array["passwordUser"]){
             $this->changeUser($param[0]);

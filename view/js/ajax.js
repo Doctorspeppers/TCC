@@ -1,6 +1,6 @@
-/**
-  * Função para criar um objeto XMLHTTPRequest
-  */
+/*
+    * Função para criar um objeto XMLHTTPRequest
+*/
  function CriaRequest() {
      try{
          request = new XMLHttpRequest();        
@@ -24,9 +24,9 @@
          return request;
  }
   
- /**
-  * Função para enviar os dados
-  */
+/*
+    * Função para enviar os dados
+*/
 
 
 

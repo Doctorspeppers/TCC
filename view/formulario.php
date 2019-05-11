@@ -3,10 +3,9 @@ namespace view;
 define(__DIR__,"","/var/www/html/TCC");
 
 ?>
-<script type="text/javascript" src="js/ajax.js">
 <div class="jumbotron rounded-0 p-5 bg-dark row">
       <div class="container border rounded bg-white col-sm-6 p-5">
-        <form id="resultado" action="controller/user.php" method="post">
+        <form action="controller/user.php?command=newUser" method="post">
           <h4 class="display-4 text-secondary">Faça seu cadastro
           </h4>
           <div class="form-group row">
@@ -48,19 +47,19 @@ define(__DIR__,"","/var/www/html/TCC");
             <div class="col rounded border border-dark shadow-sm">
               
               <div class="form-check form-control-sm">
-                <input class="form-check-input rounded border border-dark shadow-sm" type="radio" name="genderUser" id="radios1" value="feminino" checked>
+                <input class="form-check-input rounded border border-dark shadow-sm" type="radio" name="genderUser" id="radios1" value="female" checked>
                 <label class="form-check-label" for="genderUser">
                   Feminino
                 </label>
               </div>
               <div class="form-check form-control-sm">
-                <input class="form-check-input rounded border border-dark shadow-sm" type="radio" name="genderUser" id="radios2" value="masculino">
+                <input class="form-check-input rounded border border-dark shadow-sm" type="radio" name="genderUser" id="radios2" value="male">
                 <label class="form-check-label" for="genderUser">
                   Masculino
                 </label>
               </div>
               <div class="form-check form-control-sm">
-                <input class="form-check-input rounded border border-dark shadow-sm" type="radio" name="genderUser" id="radios3" value="outro">
+                <input class="form-check-input rounded border border-dark shadow-sm" type="radio" name="genderUser" id="radios3" value="other">
                 <label class="form-check-label" for="genderUser">
                   Outro
                 </label>
