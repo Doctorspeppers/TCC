@@ -5,10 +5,7 @@ include __DIR__."/../abstractclass/user.abstractclass.php";
 
 
 class normuser extends \asAbstractClass\User{
-    public function __construct($configFile)
-    {
-        \asAbstractClass\User::__construct($configFile);
-    }
+   
 
 }
 

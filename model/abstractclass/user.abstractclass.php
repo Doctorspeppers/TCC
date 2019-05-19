@@ -94,6 +94,7 @@ abstract class User implements \asInterface\User{
           return False;
         }
       }catch(Exception $e){
+        //Retorna falso pra não dar aquele vexame
         return false;
       }
   }
@@ -121,6 +122,7 @@ abstract class User implements \asInterface\User{
         return False;
     }
     }catch(Exception $e){
+      //Retorna falso pra não dar aquele vexame
       return false;
     }   
   }
@@ -131,7 +133,7 @@ abstract class User implements \asInterface\User{
       $result = $this->executeQuery(["idUser"=>$this->idUser],"pickUser","/[^0-9]/");
       $this->changeUser($result[0]);
     }catch(Exception $e){
-      
+      //Retorna falso pra não dar aquele vexame
     }
   }
 
@@ -153,7 +155,7 @@ abstract class User implements \asInterface\User{
           return False;
         }
     }catch(Exception $e){
-        
+        //Retorna falso pra não dar aquele vexame
         return [False];
     }
   }
@@ -162,7 +164,8 @@ abstract class User implements \asInterface\User{
     try{
       $this->executeQuery(["idUser"=>$this->idUser,"idItem"=>$idItem],"favoriteAdd","/[^0-9]/");
     }catch(Exception $e){
-
+      return False;
+      //Retorna falso pra não dar aquele vexame
     }
   }
 
@@ -176,7 +179,7 @@ abstract class User implements \asInterface\User{
         return False;
       }
   }catch(Exception $e){
-
+      //Retorna falso pra não dar aquele vexame
       return False;
   }
   }

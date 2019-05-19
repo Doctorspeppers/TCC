@@ -23,11 +23,7 @@ trait database{
     protected function connect(){
         switch($this->PDO_type){
             case "mysql":
-                $this->connection = new \PDO("mysql:host=$this->PDO_host;dbname=$this->PDO_dbname", $this->PDO_user, $this->PDO_password,array(
-                    \PDO::ATTR_EMULATE_PREPARES=>false,
-                    \PDO::MYSQL_ATTR_DIRECT_QUERY=>false,
-                    \PDO::ATTR_ERRMODE=>\PDO::ERRMODE_EXCEPTION
-                ));
+                $this->connection = new \PDO("mysql:host=$this->PDO_host;dbname=$this->PDO_dbname", $this->PDO_user, $this->PDO_password);
                 break;
             case "pgsql":
                 $this->connection = new \PDO("pgsql:dbname={$this->PDO_dbname}; user={$this->PDO_user}; password={$this->PDO_password};host{$this->PDO_host};port={$this->PDO_port};");
@@ -72,7 +68,9 @@ trait database{
             
             return $result;
         }catch (PDOException $e){
-            return $e->getMessage();   
+            //Retorna falso pra não dar aquele vexame
+            return False;
+            #return $e->getMessage();   
         }
         
     }
