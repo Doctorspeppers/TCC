@@ -12,10 +12,25 @@ trait auth{
     $timetoken = "12H0M0S",
     */ 
 
-    public function newToken($ip,$timeToken,$QUERY,$forThis=True)
+    static function getUserIpAddr(){
+        if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+            //ip from share internet
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+            //ip pass from proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }else{
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
+    }
+    
+
+    public function newToken($timeToken,$QUERY,$forThis=True)
     {
-        $token = md5(rand());
-        $hashIPToken = md5($token."".md5($ip));
+        $token = md5(uniqid());
+        
+        $hashIPToken = md5($this->getUserIpAddr());
         $dateCreationToken = date("Y-m-d H:i:s");
         $expireDate = new \DateTime($dateCreationToken);
         $expireDate->add(new \DateInterval($timeToken));
@@ -42,6 +57,9 @@ trait auth{
         $this->comand(Null,"DeleteoutdatedToken","/[^[:alpha:]_]/");
     }
 
+    static public function setcookie(){
+
+    }
    
 
 }

@@ -38,7 +38,6 @@ class Post
 
   public function changePost($post)
   {  
-    $this->idPost=uniqid();
     if(isset($post["title"]))(string)$this->$title = $post['title'];
     if(isset($post["author"]))(string)$this->$author = $post['author'];
     if(isset($post["idAuthor"]))(string)$this->$idAuthor = $post['idAuthor'];

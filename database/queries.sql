@@ -25,7 +25,7 @@ UPDATE `user` SET `nameUser` = ':nameUser', `emailUser` = ':emailUser', `permiss
 
 
 --DELETE
-DELETE FROM `User` WHERE `User`.`idUser` = ':idUser'
+DELETE FROM `User` WHERE `User`.`idUser` = 1
 
 
 --------------------------

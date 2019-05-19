@@ -3,7 +3,6 @@ namespace asAbstractClass;
 define(__DIR__,"","/var/www/html/TCC/");
 include __DIR__."/../traits/PDO_db.trait.php";
 include __DIR__."/../traits/config.trait.php";
-include __DIR__."/../traits/txt_log.trait.php";
 include __DIR__."/../traits/token_auth.trait.php";
 include __DIR__."/../interface/user.interface.php";
 abstract class User implements \asInterface\User{
@@ -36,8 +35,16 @@ abstract class User implements \asInterface\User{
 
   public function changeUser($parameters):void
   {
-      /*the object expects an array to be passed with the following items
-          $idUser,$nameUser,$emailUser,$birthDateUser,$genderUser,$dateCreationUser,$permissionUser
+      /**
+          *the object expects an array to be passed with the following items
+          * @param idUser INT, the same used and tagged by DB
+          * @param nameUser string, name of user in the sistem or the nickname
+          * @param emailUser  string, email of user used for verification and password change
+          * @param passwordUser string, in hash md5 format
+          * @param birthDateUser object, in MySQL format date
+          * @param genderUser string, with the gender full name
+          * @param dateCreationUser object, in MySQL format date
+          * @param permissionUser INT, normal user use "1" integer in this param
         */
     
     if(isset($parameters['idUser']))$this->idUser = $parameters["idUser"];
@@ -46,17 +53,22 @@ abstract class User implements \asInterface\User{
     if(isset($parameters['passwordUser']))$this->passwordUser = $parameters["passwordUser"];
     if(isset($parameters['genderUser']))(string) $this->genderUser = $parameters['genderUser'];
     if(isset($parameters['birthDateUser']))$this->birthDateUser = new \DateTime($parameters['birthDateUser']);
-    if(isset($parameters['birthDateUser']))$this->birthDateUser = $this->birthDateUser->format('YYYY-MM-DD');
-    if(isset($parameters['dateCreationUser']))(string) $this->dateCreationUser = $parameters['dateCreationUser'];
+    if(isset($parameters['birthDateUser']))$this->birthDateUser = $this->birthDateUser->format('Y-M-D');
+    if(isset($parameters['dateCreationUser'])) $this->dateCreationUser = new \DateTime($parameters['dateCreationUser']);
+    if(isset($parameters['dateCreationUser']))$this->dateCreationUser = $this->dateCreationUser->format('Y-M-D');
     if(isset($parameters['permissionUser']))$this->permissionUser = $parameters['permissionUser'];
     
   }
 
+  /** the object expects an array to be passed with the following items
+    * @param newPasswordUser string,
+    * @param passwordUser string,
+    * @param birthDateUser string,
+    * Function for alter for adapt in the business rules this params,
+    * ! Just alter this function if your business rules set another default type. 
+  */
   public static function convertParams($parameters)
   {
-      /*the object expects an array to be passed with the following items
-          $idUser,$nameUser,$emailUser,$birthDateUser,$genderUser,$dateCreationUser,$permissionUser
-        */
     if(isset($parameters['newPasswordUser']))$parameters['newPasswordUser'] = md5($parameters["newPasswordUser"]);
     if(isset($parameters['passwordUser']))(string)$parameters['passwordUser'] = md5($parameters["passwordUser"]);
     if(isset($parameters['birthDateUser']))$parameters['birthDateUser'] = new \DateTime($parameters['birthDateUser']);
@@ -64,24 +76,25 @@ abstract class User implements \asInterface\User{
     return $parameters;
   }
 
-
+  /**
+   * newUser:
+   * Used for creat new user in Database 
+   */
   public function newUser($data)
   {
       try{
-        
+        #Convert params for the business rules 
         $data = $this->convertParams($data);
-        
+        #Executing DB trait for change and commit changes of new user in DB tables
         $verify = $this->executeQuery($data,"verifyEmail","/[^0-9a-zA-Z@-Z.]/");
         if(\sizeof($verify) == 0){
-
           $result = $this->executeQuery($data,"newUser","/[^0-9a-zA-Z@-Z.]/");
           return $result;  
         }else{
           return False;
         }
       }catch(Exception $e){
-          #$user->logError($e);
-        $e->getMessage();
+        return false;
       }
   }
 
@@ -89,23 +102,26 @@ abstract class User implements \asInterface\User{
     return True;
   }
 
-
-  function LoginUser($ip,$array)
+  function LoginUser($data,$tempo)
   {
     try{
+       
+        $data = $this->convertParams($data);
         
-        $array = $this->convertParams($array);
-        $param = $this->executeQuery($array,"selectUser","/[^0-9a-zA-Z@-Z X]/");
-        if($param[0]["emailUser"] == $array["emailUser"] && $param[0]["passwordUser"] == $array["passwordUser"]){
-            $this->changeUser($param[0]);
-            $this->newToken($array["ip"],"PT12H00S","newToken");
-            return True;
+        $param = $this->executeQuery($data,"selectUser","/[^0-9a-zA-Z@-Z X]/");
+        if(isset($param[0])){
+          if($param[0]["emailUser"] == $data["emailUser"] && $param[0]["passwordUser"] == $data["passwordUser"]){
+              $this->changeUser($param[0]);
+              $this->newToken("PT".strval($tempo)."H00S","newToken"); 
+              return True;
+        }else{
+          return False;
+        }
     }else{
         return False;
     }
     }catch(Exception $e){
-        $this->logError($e);
-        return True;
+      return false;
     }   
   }
 
@@ -115,7 +131,7 @@ abstract class User implements \asInterface\User{
       $result = $this->executeQuery(["idUser"=>$this->idUser],"pickUser","/[^0-9]/");
       $this->changeUser($result[0]);
     }catch(Exception $e){
-      $this->logError($e);
+      
     }
   }
 
@@ -137,7 +153,7 @@ abstract class User implements \asInterface\User{
           return False;
         }
     }catch(Exception $e){
-        $this->logError($e);
+        
         return [False];
     }
   }
@@ -160,7 +176,7 @@ abstract class User implements \asInterface\User{
         return False;
       }
   }catch(Exception $e){
-      #$this->logError($e);
+
       return False;
   }
   }
