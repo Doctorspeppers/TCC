@@ -1,0 +1,1 @@
+var x = document.getElementById("input").checked;
