@@ -1,15 +1,12 @@
 <?php
 namespace Classe;
-define(__DIR__,"","/var/www/html/TCC/");
-include __DIR__."/../traits/PDO_db.trait.php";
-include __DIR__."/../traits/config.trait.php";
-include __DIR__."/../traits/token_auth.trait.php";
+
+
 
 class Item
 {
     use \asTrait\database;
     use \asTrait\config;
-    #use \asTrait\log;
     use \asTrait\auth;
 
     protected $idItem;

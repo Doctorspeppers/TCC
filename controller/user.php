@@ -1,7 +1,10 @@
 <?php
 namespace controller;
-include "../model/class/users.php";
-$user = new User("/../../config/user.ini");
+include __DIR__."/../model/traits/PDO_db.trait.php";
+include __DIR__."/../model/traits/config.trait.php";
+include __DIR__."/../model/traits/token_auth.trait.php";
+include __DIR__."/../model/class/user.php";
+$user = new \Classe\User("/../../config/user.ini");
 session_start();
 if(isset($_GET["command"])){
     $comando = $_GET["command"];
@@ -45,7 +48,7 @@ if($comando == "newUser"){
             $_SESSION["result"]="<p>Ok, seus dados foram alterados com sucessos</p>";
             $_SESSION["usuario"] = serialize($user);
             \header('Location:../index.php');
-        }elseif{
+        }else{
             $_SESSION["result"] = "<p>Alguma informação esta incorreta, tente novamente</p>";
             \header('Location:../index.php');
         }

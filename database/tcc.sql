@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Ago-2019 às 17:28
+-- Generation Time: 25-Set-2019 às 00:06
 -- Versão do servidor: 10.1.40-MariaDB
 -- versão do PHP: 7.3.5
 
@@ -178,7 +178,8 @@ INSERT INTO `price` (`idPrice`, `datePrice`, `valuePrice`, `fk_idStore`, `fk_idI
 (4, 'Agosto/2018', 499, 3, 6),
 (5, 'Abril/2019', 4000, 2, 12),
 (6, 'Maio/2019', 2155, 2, 2),
-(7, 'Setembro/2019', 1335, 2, 2);
+(7, 'Setembro/2019', 1335, 2, 2),
+(8, 'Novembro/2019', 2333, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -225,7 +226,8 @@ INSERT INTO `token` (`idToken`, `token`, `hashIPToken`, `expireDateToken`, `date
 (1, '13ea96aa6bab545f797a0b1d5252c485', 'cb7271ffaab1129ddc7bf55ed9e50f97', '2019-04-26 02:55:22', '2019-04-25 14:55:22', 8),
 (2, '949584f773b5b6777a3a0a22897a72b3', '84e68612d37bde2533698451f5b3b1b9', '2019-04-26 02:56:41', '2019-04-25 14:56:41', 8),
 (3, '56a1cce70dfd0ddb38fdbdb12f18101d', '0ddfd0406054b8bbe729e74f259e11c2', '2019-04-26 02:56:52', '2019-04-25 14:56:52', 8),
-(4, 'ce52169e37985c74d72c8424452904a1', 'dee64467b8804eb4de7335f26b2cea50', '2019-04-26 02:57:30', '2019-04-25 14:57:30', 8);
+(4, 'ce52169e37985c74d72c8424452904a1', 'dee64467b8804eb4de7335f26b2cea50', '2019-04-26 02:57:30', '2019-04-25 14:57:30', 8),
+(5, 'd943482badf379fc0239501ef763278d', '837ec5754f503cfaaee0929fd48974e7', '2019-09-23 02:45:46', '2019-09-22 14:45:46', 11);
 
 -- --------------------------------------------------------
 
@@ -250,7 +252,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`idUser`, `nameUser`, `emailUser`, `permissionUser`, `birthDateUser`, `dateCreationUser`, `passwordUser`, `genderUser`) VALUES
 (8, 'Pedro', 'pedro@gmail.com', 1, '2002-04-25', '2019-04-25 15:40:44', '098f6bcd4621d373cade4e832627b4f6', 'male'),
-(10, 'Lara', 'larinha@email.com', 0, '2002-02-13', '2019-08-25 17:44:28', 'larinha123', 'female');
+(10, 'Lara', 'larinha@email.com', 0, '2002-02-13', '2019-08-25 17:44:28', 'larinha123', 'female'),
+(11, 'Doutor', 'doctorspeppers@gmail.com', 0, '2002-04-25', '2019-09-22 12:45:37', '5a3bccdf1cd785ca5030be50b2fd2e11', ':genderUser');
 
 --
 -- Indexes for dumped tables
@@ -381,7 +384,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `price`
 --
 ALTER TABLE `price`
-  MODIFY `idPrice` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idPrice` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `store`
@@ -393,13 +396,13 @@ ALTER TABLE `store`
 -- AUTO_INCREMENT for table `token`
 --
 ALTER TABLE `token`
-  MODIFY `idToken` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idToken` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idUser` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

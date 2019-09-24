@@ -1,10 +1,7 @@
 <?php
-namespace class;
+namespace Classe;
 define(__DIR__,"","/var/www/html/TCC/");
-include __DIR__."/../traits/PDO_db.trait.php";
-include __DIR__."/../traits/config.trait.php";
-include __DIR__."/../traits/token_auth.trait.php";
-include __DIR__."/../interface/user.interface.php";
+
 class User{
   use \asTrait\database;
   use \asTrait\config;
@@ -145,12 +142,14 @@ class User{
               return False;
 
           }
-          $this->executeQuery($data,"updateUser","/[^0-9a-zA-Z@-Z X]/");
-          $this->getUser();
-          return True;
-        }else{
+            $this->executeQuery($data,"updateUser","/[^0-9a-zA-Z@-Z X]/");
+            $this->getUser();
+            return True;
+          }
+      }else{
           return False;
         }
+        
     }catch(Exception $e){
         //Retorna falso pra não dar aquele vexame
         return [False];
@@ -183,9 +182,9 @@ class User{
   }
 
   public function postComment($data){
-    {
+    
       try{
-          $data["idUser"] = $this->idUser
+          $data["idUser"] = $this->idUser;
           $result = $this->executeQuery($data,"postComment","/[^0-9a-zA-Z@-Z X]/");
           if(\sizeof($result) == 0){
             return True;  
@@ -200,9 +199,9 @@ class User{
 
 
   public function deleteComment($data){
-    {
+    
       try{
-          $data["idUser"] = $this->idUser
+          $data["idUser"] = $this->idUser;
           $result = $this->executeQuery($data,"deleteComment","/[^0-9a-zA-Z@-Z X]/");
           if(\sizeof($result) == 0){
             return True;  
@@ -216,9 +215,9 @@ class User{
   }
 
   public function editComment($data){
-    {
+    
       try{
-          $data["idUser"] = $this->idUser
+          $data["idUser"] = $this->idUser;
           $result = $this->executeQuery($data,"editComment","/[^0-9a-zA-Z@-Z X]/");
           if(\sizeof($result) == 0){
             return True;  

@@ -1,5 +1,5 @@
 <?php
-    namespace view;
+    namespace page;
     define(__DIR__,"","/var/www/html/TCC");
     $nomeDaPagina = "Favoritos";
     include "view/header.php";
