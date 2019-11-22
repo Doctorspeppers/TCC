@@ -43,19 +43,24 @@ namespace view;
               <input type="password" class="form-control rounded border border-light shadow-sm" id="campo_conf_senha" placeholder="Confirme sua senha" required>
             </div>
           </div>
-          <div class="form-group">
-            <h5 class="grey-text col-form-label ">Selecione seu genero:</h5>
+          <div class="form-group mt-n3">
+            <h5 class="grey-text col-form-label">Selecione seu genero:</h5>
             <div class="btn-group" data-toggle="buttons">
-              <label class="label btn m-3 pl-4 rounded-lg btn-amber form-check-label">
+              <div class="form-check form-check-inline">
                 <input class="input form-check-input" type="radio" name="genero" id="option1" autocomplete="off">
-                Masculino
-                </label>
-              <label class="label btn m-3 pl-4 rounded-lg btn-amber form-check-label">
-                <input class=" input form-check-input" type="radio" name="genero" id="option2" autocomplete="off"> Feminino
-              </label>
-              <label class="label btn m-3 pl-4 rounded-lg btn-amber form-check-label">
-                <input class="input form-check-input" type="radio" name="genero" id="option3" autocomplete="off"> Outro
-              </label>
+                <label class="label form-check-label">Masculino</label>  
+              </div>
+              
+              <div class="form-check form-check-inline">
+                <input class="input form-check-input" type="radio" name="genero" id="option2" autocomplete="off">
+                <label class="label form-check-label">Feminino</label>
+              </div>
+              
+              <div class="form-check form-check-inline">
+                <input class="input form-check-input" type="radio" name="genero" id="option3" autocomplete="off">
+                <label class="label form-check-label">Outro</label>
+              </div>
+              
             </div>
           </div>
           <div class="form-group">

@@ -1,6 +1,4 @@
-<?php 
-namespace view;
-?>
+
       <div class="container border mb-5  mt-5 col-5  rounded  text-center p-5">
         <form method="post" action="controller/user.php?command=LoginUser">
           <h4 class="display-4 deep-orange-text">Bem vindo</h4>

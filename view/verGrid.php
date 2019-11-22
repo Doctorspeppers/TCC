@@ -54,8 +54,8 @@ $error = False;
 
 
             <form action="search.php" method="get"  class="form-group row d-flex justify-content-center" style="max-width: 100%;">
-                <div class="input-group md-form form-sm col-md-6 form-2 pl-0">
-                    <input name="search" class="border border-warning rounded form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search">
+                <div class="input-group md-form form-sm col-md-6 form-2">
+                    <input name="search" class="border border-warning rounded form-control form-control-lg py-1" type="text" placeholder="Search" aria-label="Search">
                     <div class="input-group-append">
                     <button type="submit" class="input-group-text border-warning orange lighten-3" id="basic-text1"><img class="" style="width:15px" src="https://cdn.iconscout.com/icon/free/png-256/magnifier-search-find-glass-magnify-30520.png"></button>                    </div>
                 </div>
